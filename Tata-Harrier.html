@@ -1,0 +1,4836 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="/css/lightbox.css" />
+  <link
+    rel="stylesheet"
+    href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.min.css"
+  />
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../Bootstrap/assets/css/bootstrap.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="assets/images/tata.png"
+      type="image/x-icon"
+    />
+    <title>TATA Harrier Replication</title>
+    <style>
+      body {
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        color: #fff;
+        /* font-size: 15px;
+        font-weight: 400; */
+        padding: 0 !important;
+        margin: 0 !important;
+        font-family: uni_neueregular, "botplatform-font", "Helvetica Neue",
+          Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+      }
+
+      article,
+      aside,
+      footer,
+      header,
+      nav,
+      section {
+        display: block;
+      }
+
+      header {
+        display: block;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        z-index: 9999;
+      }
+      .all_logo {
+        display: flex;
+        align-items: flex-start;
+      }
+      .logo_header {
+        background-color: #000;
+        padding: 15px 6%;
+      }
+
+      @media only screen and (max-width: 991px) {
+        .logo_header {
+          padding: 15px 2% !important;
+        }
+      }
+
+      .max_width {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .max_width {
+          max-width: 100%;
+          padding: 0 15px;
+        }
+      }
+
+      .logo {
+        flex: 1;
+      }
+      .logo a img {
+        position: relative;
+        vertical-align: middle;
+        height: auto;
+        z-index: 999999;
+      }
+
+      .logo:nth-child(1) img {
+        width: 160px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .logo:nth-child(1) img {
+          width: 120px;
+        }
+      }
+
+      @media screen and (max-width: 767px) {
+        .logo {
+          flex: 1 1;
+        }
+      }
+
+      .logo:nth-child(3) {
+        text-align: right;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .logo:nth-child(3) {
+          display: none;
+        }
+      }
+
+      .main_navbar {
+        background: #000;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        margin: auto;
+        z-index: 99999;
+      }
+      .main_navbar nav {
+        position: relative;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main_navbar nav {
+          display: none;
+          position: absolute;
+          width: 100%;
+          left: 0;
+          right: 0;
+          background: #242424;
+          border-top: 1px solid #555;
+          z-index: 999;
+          top: 59px;
+        }
+      }
+
+      dl,
+      ol,
+      ul {
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+
+      .model-nav {
+        padding-left: 20%;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .model-nav {
+          padding-left: 0;
+        }
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      nav ul,
+      nav a {
+        position: relative;
+      }
+
+      a,
+      a:focus,
+      a:hover {
+        text-decoration: none;
+        outline: 0 !important;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .right,
+        nav ul {
+          text-align: left;
+        }
+      }
+
+      .main_navbar nav > ul > li {
+        display: inline-block;
+        margin: 0 10px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main_navbar nav > ul > li {
+          display: block;
+          width: auto;
+          margin: 0;
+        }
+      }
+
+      @media only screen and (max-width: 991px) {
+        .main_navbar nav > ul > li {
+          display: inline-block;
+          margin: 0 20px;
+        }
+      }
+
+      .main_navbar nav > ul > li > a {
+        padding: 18px 0;
+        width: 100px;
+        min-height: 73px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main_navbar nav > ul > li > a {
+          padding: 20px;
+          width: 100%;
+        }
+      }
+
+      @media only screen and (max-width: 991px) {
+        .main_navbar nav > ul > li > a {
+          width: auto;
+          min-height: auto;
+        }
+      }
+
+      .main_navbar nav ul li a {
+        display: block;
+        font-size: 15px;
+        color: #fff;
+      }
+
+      .main_navbar nav > ul > li.dropdown > a::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        width: 9px;
+        height: 9px;
+        margin-top: 2px;
+        margin-left: 10px;
+        -webkit-transition: all 0.3s ease;
+        -moz-transition: all 0.3s ease;
+        -o-transition: all 0.3s ease;
+        -ms-transition: all 0.3s ease;
+        transition: all 0.3s ease;
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        -o-transform: rotate(-14deg);
+        -ms-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+      }
+
+      .main_navbar nav > ul > li.model-nav > ul {
+        padding-bottom: 2%;
+      }
+
+      .main_navbar nav > ul > li.dropdown > ul {
+        display: none;
+        width: 88%;
+        margin: 0 6%;
+        position: absolute;
+        left: 0;
+        top: 70px;
+        background: #1f1f1f;
+        text-align: left;
+        padding: 4%;
+        z-index: 10;
+        box-shadow: 0 5px 10px rgb(0 0 0 / 10%);
+        -webkit-transition: all 0.1s linear;
+        -moz-transition: all 0.1s linear;
+        -o-transition: all 0.1s linear;
+        -ms-transition: all 0.1s linear;
+        transition: all 0.1s linear;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main_navbar nav > ul > li.dropdown > ul {
+          display: none;
+          position: relative;
+          box-shadow: none;
+        }
+      }
+
+      .main_navbar li.build_btn_topmenu a.virtual_link_topmenu {
+        font-size: 13px;
+        min-height: auto;
+      }
+
+      .main_navbar li.build_btn_topmenu a,
+      .virtual_link_topmenu {
+        position: relative;
+        padding: 15px 5px !important;
+        background: url(https://cars.tatamotors.com/images/build-btn.gif)
+          no-repeat center center !important;
+        background-size: cover;
+        min-height: auto !important;
+        /* top: 8px; */
+      }
+      .greedy-nav li.build_btn a,
+      .main_navbar li.build_btn_topmenu a {
+        color: #fff;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .main_navbar li.build_btn_topmenu a {
+          padding: 15px;
+        }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .main_navbar li.build_btn_topmenu a.virtual_link_topmenu {
+          width: 100%;
+        }
+      }
+
+      .greedy-nav .visible-links li.build_btn a,
+      .main_navbar li.build_btn_topmenu a,
+      .virtual_link_topmenu,
+      .greedy-nav .hidden-links li.build_btn a {
+        font-family: uni_neueheavy, sans-serif, Arial, Helvetica;
+        text-transform: uppercase;
+        font-weight: 600 !important;
+      }
+
+      .hideexcepthomepage {
+        display: none !important;
+      }
+
+      .hiddenDesktop {
+        display: none;
+      }
+
+      a,
+      img {
+        display: inline-block;
+        display: flex;
+        align-self: center;
+      }
+
+      a,
+      a:focus,
+      a:hover {
+        outline: 0 !important;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .hiddenDesktop {
+          display: block;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger {
+          position: absolute;
+          top: 10px;
+          right: 15px;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger a {
+          position: relative;
+          padding: 15px 0;
+          color: #ffffff;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger a span {
+          position: relative;
+          display: inline-block;
+          width: 20px;
+          height: 2px;
+          margin-left: 6px;
+          background: #fff;
+          vertical-align: super;
+          transform: translateY(0.1em);
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger a span:before {
+          bottom: 6px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger a span:after {
+          top: 6px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .mobile_hamburger a span:before,
+        .mobile_hamburger a span:after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          left: 0;
+          height: 2px;
+          background: #fff;
+        }
+      }
+
+      /* Navigation */
+
+      .navigation {
+        background: #e7e7e7;
+        box-shadow: 0 2px 10px rgba (0, 0, 0, 0.2);
+      }
+
+      @media only screen and (max-width: 991px) {
+        .navigation > .max_width {
+          padding: 0;
+        }
+      }
+
+      .greedy-nav {
+        position: relative;
+        min-width: 250px;
+        text-align: center;
+        overflow: hidden;
+      }
+
+      .greedy-nav .visible-links {
+        display: inline-table;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .greedy-nav {
+          text-align: left;
+          display: block !important;
+          background: #e7e7e7 !important;
+        }
+      }
+
+      @media only screen and (max-width: 991px) {
+        .greedy-nav {
+          text-align: left;
+        }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .greedy-nav {
+          padding: 0 15px;
+        }
+      }
+
+      .greedy-nav .hamburger {
+        position: relative;
+        width: 26px;
+        margin: auto;
+      }
+      .greedy-nav .hamburger.togglehamburger {
+        height: 0;
+      }
+      .menuClose {
+        display: none;
+      }
+
+      .greedy-nav .menuOpen .hamburger:before {
+        height: 15px;
+        width: 15px;
+        background: transparent;
+        border-left: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        transform: rotate(-45deg);
+        top: -11px;
+      }
+
+      nav a,
+      nav ul {
+        position: relative;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .right,
+        nav ul {
+          text-align: left;
+        }
+      }
+
+      button {
+        appearance: auto;
+        writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: buttontext;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: center;
+        align-items: flex-start;
+        cursor: default;
+        box-sizing: border-box;
+        background-color: buttonface;
+        margin: 0em;
+        padding: 1px 6px;
+        border-width: 2px;
+        border-style: outset;
+        border-color: buttonborder;
+        border-image: initial;
+      }
+      button,
+      hr,
+      input {
+        overflow: visible;
+      }
+
+      button,
+      input,
+      optgroup,
+      select,
+      textarea {
+        font-size: 100%;
+        line-height: 1.15;
+        margin: 0;
+        border: 0;
+        outline: 0 !important;
+        appearance: none;
+        border-radius: 0;
+      }
+      button,
+      select {
+        text-transform: none;
+      }
+
+      .greedy-nav button {
+        position: absolute;
+        height: 100%;
+        right: 0;
+        padding: 0 15px;
+        border: 0;
+        outline: none;
+        background-color: transparent;
+        color: #fff;
+        cursor: pointer;
+      }
+
+      .greedy-nav button::after {
+        display: none;
+      }
+
+      .greedy-nav .hidden {
+        display: none;
+        visibility: hidden;
+      }
+
+      .greedy-nav .hidden-links {
+        display: block;
+        position: absolute;
+        right: 0px;
+        top: 100%;
+        left: 0;
+        background: #e7e7e7;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .greedy-nav .hidden-links {
+          border-top: 1px solid #ddd;
+          padding: 10px 15px;
+        }
+      }
+
+      .greedy-nav .visible-links li {
+        position: relative;
+        display: table-cell;
+      }
+
+      .greedy-nav a.active {
+        color: #98040d;
+      }
+
+      .greedy-nav a {
+        font-size: 13px !important;
+        margin: 0 5px !important;
+      }
+
+      nav a,
+      nav li {
+        display: inline-table;
+      }
+      li {
+        display: list-item;
+        text-align: -webkit-match-parent;
+      }
+
+      .greedy-nav a {
+        position: relative !important;
+        text-transform: uppercase !important;
+        display: block !important;
+        padding: 15px 0 !important;
+        margin: 0 9px !important;
+        font-size: 13px;
+        color: #242424 !important;
+        text-decoration: none !important;
+      }
+
+      .greedy-nav a.active {
+        color: #98040d;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .greedy-nav a {
+          margin: 0 10px;
+        }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .greedy-nav a {
+          padding: 15px 0px;
+          margin: 0 10px;
+        }
+      }
+
+      /******** header end ************/
+
+      .clearHeight {
+        height: 115px;
+      }
+
+      .banner_section {
+        position: relative;
+      }
+
+      .lead_form {
+        position: relative;
+        padding: 35px 0;
+        background: #1d1d1d;
+        border-top: 5px solid #0b0b0b;
+      }
+      p {
+        display: block;
+        line-height: 22px;
+      }
+
+      /* ********* banner end ********** */
+      .nexon_details {
+        background-color: #000;
+      }
+
+      .dark_card {
+        background: #000;
+        background-image: initial;
+        background-position-x: initial;
+        background-position-y: initial;
+        background-size: initial;
+        background-attachment: initial;
+        background-origin: initial;
+        background-clip: initial;
+        background-color: rgb(0, 0, 0);
+      }
+
+      .nexon_details > .dark_card .max_width.flex {
+        align-items: center !important;
+      }
+      @media only screen and (max-width: 767px) {
+        .flex {
+          display: block !important;
+        }
+      }
+      .width75 {
+        width: 75%;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .width10,
+        .width15,
+        .width16,
+        .width20,
+        .width25,
+        .width30,
+        .width33,
+        .width40,
+        .width50,
+        .width55,
+        .width60,
+        .width66,
+        .width70,
+        .width75,
+        .width80,
+        .width90 {
+          float: none !important;
+          width: 100% !important;
+        }
+      }
+      @media only screen and (max-width: 991px) {
+        .tabWidth70 {
+          width: 70% !important;
+        }
+      }
+      .slick-slide,
+      .width10,
+      .width15,
+      .width16,
+      .width20,
+      .width25,
+      .width30,
+      .width33,
+      .width40,
+      .width50,
+      .width55,
+      .width60,
+      .width66,
+      .width70,
+      .width75,
+      .width80,
+      .width90 {
+        float: left;
+        min-height: 1px;
+      }
+      .left_nexon_details {
+        position: relative;
+        color: #fff;
+        padding: 30px 0;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .left_nexon_details {
+          padding: 20px 0;
+          width: 100%;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .hiddenMobile {
+          display: none;
+        }
+      }
+      @media only screen and (max-width: 991px) {
+        .tabWidth30 {
+          width: 30%;
+        }
+      }
+      .reviews_nexon {
+        margin: 15px 0;
+      }
+      .left_nexon_details p a,
+      .reviews_nexon small {
+        margin-left: 10px;
+        font-size: smaller;
+      }
+      h4#lblPriceRange {
+        padding: 10px 0px;
+      }
+      .left_nexon_details h1,
+      .left_nexon_details h2 {
+        font-size: 25px;
+      }
+      .reviews_nexon span img {
+        width: 25px;
+        vertical-align: sub;
+        display: inline;
+      }
+      .left_nexon_details h4 {
+        font-size: 22px;
+        font-weight: 400;
+        padding-bottom: 15px;
+      }
+      .left_nexon_details p {
+        line-height: 22px;
+        display: inline-flex;
+        font-size: 15px;
+        /* white-space: nowrap; */
+        flex-wrap: wrap;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+      input {
+        writing-mode: horizontal-tb !important;
+        text-rendering: auto;
+        color: fieldtext;
+        letter-spacing: normal;
+        word-spacing: normal;
+        line-height: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        /* appearance: auto; */
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+        /* background-color: field;
+        margin: 0em;
+        padding: 1px 2px;
+        border-width: 2px;
+        border-style: inset;
+        border-color: -internal-light-dark(
+          rgb(118, 118, 118),
+          rgb(133, 133, 133)
+        ); */
+        /* border-image: initial; */
+        outline: 0 !important;
+      }
+      .form-control {
+        display: block;
+        width: 100%;
+        padding: 0.375rem 0.75rem;
+        font-size: 1rem;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        background-color: #fff;
+        background-clip: padding-box;
+        border: 1px solid #ced4da;
+        appearance: none;
+        border-radius: 0.375rem;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+      }
+      .whereami {
+        color: #98040d;
+      }
+      .left_nexon_details p input {
+        display: inline-block;
+        width: auto;
+        font-family: uni_neueregular;
+        margin-left: 10px;
+        color: #98040d;
+        border: none;
+        border-bottom: 2px solid #98040d !important;
+        border-radius: 0 !important;
+        padding-bottom: 5px;
+        background: 0 0;
+        outline: 0 !important;
+      }
+      @media only screen and (max-width: 767px) {
+        .left_nexon_details p input {
+          width: 30%;
+          outline: 0 !important;
+        }
+      }
+      .left_nexon_details > .city_box {
+        left: 160px;
+        margin-top: 0;
+      }
+      .city_box {
+        padding: 10px;
+        border: 1px solid #c5c5c5;
+        position: absolute;
+        background: #fff;
+        left: 203px;
+        width: 148px;
+        z-index: 10;
+        margin-top: -15px;
+      }
+      .width25 {
+        width: 25%;
+      }
+      .city_box,
+      .pricing_content .twocompare {
+        display: none;
+      }
+      a,
+      img {
+        display: inline-block;
+      }
+      @media only screen and (max-width: 767px) {
+        .city_box {
+          left: 154px;
+          margin-top: -10px;
+        }
+      }
+
+      .right_nexon_details {
+        padding: 30px 0;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details {
+          display: flex;
+          position: fixed;
+          padding: 10px;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          z-index: 9998;
+          background: #202020;
+          box-shadow: 0 0 20px #000;
+        }
+      }
+      .right_nexon_details a.offer_btn {
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details a.offer_btn {
+          background: 0 0;
+          border: 1px solid #fff;
+          width: 60%;
+          height: 50px;
+          line-height: 50px;
+        }
+      }
+      .right_nexon_details a {
+        position: relative;
+        text-align: center;
+        display: block;
+        color: #fff;
+        padding: 15px 0;
+      }
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details a {
+          flex: 1;
+          padding: 0;
+        }
+      }
+      .right_nexon_details a.test_drive_btn {
+        background: transparent;
+        border: 1px solid #fff;
+        margin: 10px 0;
+      }
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details a.chat_btn span,
+        .right_nexon_details a.test_drive_btn span {
+          display: none;
+        }
+      }
+      .feature_img a,
+      .feature_img h3,
+      .right_nexon_details a.test_drive_btn img,
+      .variants_price_section > .dark_card > a {
+        display: none;
+      }
+      img {
+        /* display: block; */
+        vertical-align: middle;
+        max-width: 100%;
+        height: auto;
+      }
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details a.test_drive_btn img {
+          display: block;
+          width: 25px;
+          margin: auto;
+          transform: translateY(12px);
+        }
+      }
+
+      /* ********* lead form green ******* */
+      .lead_form {
+        position: relative;
+        padding: 35px 0;
+        background: #1d1d1d;
+        border-top: 5px solid #0b0b0b;
+      }
+      .lead_form h4 {
+        font-size: 22px;
+        font-weight: 400;
+        margin-bottom: 6px;
+        color: #fff;
+      }
+      .home_lead_form {
+        margin-top: 30px;
+      }
+      .clear:after,
+      .clear:before {
+        content: "";
+        display: table;
+      }
+      .paddingRight {
+        padding-right: 15px;
+      }
+      @media only screen and (max-width: 767px) {
+        .paddingRight {
+          padding-right: 0;
+        }
+      }
+      .width25 {
+        width: 25%;
+      }
+      .home_lead_form .input-container {
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      .input-container {
+        position: relative;
+        margin-bottom: 30px;
+      }
+      @media only screen and (max-width: 767px) {
+        .home_lead_form .input-container {
+          margin-bottom: 30px;
+          margin-top: 0;
+        }
+      }
+      .home_lead_form .input-container .floatlabel {
+        border-bottom: 1px solid #7a7a7a;
+        color: #fff;
+      }
+      .input-container .floatlabel {
+        border: none;
+        border-bottom: 2px solid #9c9c9d;
+        font-size: 16px;
+        line-height: 20px;
+        outline: 0;
+        width: 100%;
+        padding: 0 0 6px;
+        background: 0 0;
+        color: #fff;
+      }
+      .home_lead_form .input-container label {
+        color: #7a7a7a;
+      }
+      .input-container label {
+        position: absolute;
+        top: 0;
+        left: 0;
+        color: #9c9c9d;
+        cursor: text;
+        transition: all 0.2s ease-out;
+      }
+
+      .input-container span.error {
+        display: block;
+        color: #fff;
+        padding-top: 5px;
+        font-size: 14px;
+      }
+      .paddingLeft {
+        padding-left: 15px;
+      }
+      @media only screen and (max-width: 767px) {
+        .paddingLeft {
+          padding-left: 0;
+        }
+      }
+      .genrtotp {
+        padding-bottom: 20px;
+      }
+      .btn_popup > a.disabled,
+      .btn_popup button.disabled {
+        background: #999;
+      }
+
+      .btn_popup > a,
+      .btn_popup button {
+        cursor: pointer;
+        width: 100%;
+        background: #98040d;
+        border: 1px solid transparent;
+        padding: 15px 0;
+        color: #fff;
+      }
+      .btn_popup > a,
+      .btn_popup button,
+      .main_popup > a {
+        display: block;
+        text-align: center;
+      }
+      button.disabled,
+      a.disabled {
+        pointer-events: none;
+        cursor: not-allowed;
+      }
+      .error-msg {
+        color: red;
+        font-size: 14px;
+        padding-top: 5px;
+      }
+      .clear:after {
+        clear: both;
+      }
+      .input-container .checkbox {
+        display: inline-block;
+        text-align: left;
+      }
+      .input-container .checkbox-group {
+        position: relative;
+        height: auto;
+        width: 100%;
+        display: block;
+      }
+      .input-container .checkbox-group input {
+        padding: 0;
+        height: initial;
+        width: initial;
+        margin-bottom: 0;
+        display: none;
+        cursor: pointer;
+      }
+      .input-container .checkbox-group label {
+        position: relative;
+        cursor: pointer;
+      }
+
+      .input-container .checkbox-group label:before {
+        content: "";
+        appearance: none;
+        -webkit-appearance: none;
+        background-color: transparent;
+        border: 2px solid #fff;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 5%),
+          inset 0 -15px 10px -12px rgb(0 0 0 / 5%);
+        padding: 8px;
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        cursor: pointer;
+        margin-right: 10px;
+        top: -2px;
+      }
+      a {
+        background-color: transparent;
+        -webkit-text-decoration-skip: objects;
+        color: #98040d;
+        transition: all 0.2s ease-out;
+        -webkit-transition: all 0.2s ease-out;
+        -moz-transition: all 0.2s ease-out;
+        cursor: pointer;
+      }
+      .input-container .checkbox-group input:checked + label:after {
+        background: transparent;
+        content: "";
+        display: block;
+        position: absolute;
+        top: 5px;
+        left: 8px;
+        width: 5px;
+        height: 10px;
+        border: solid #98040d;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+      }
+      .home_lead_form form > a {
+        float: right;
+        font-size: 12px;
+        margin-top: 10px;
+        color: #fff;
+      }
+      @media only screen and (max-width: 767px) {
+        .home_lead_form form > a {
+          float: none !important;
+          margin-top: 30px !important;
+        }
+      }
+      .lead_form .success_lead {
+        margin-top: 20px;
+      }
+      .lead_form .success_lead h5 {
+        font-size: 22px;
+        color: #c5a861;
+      }
+
+      /* ******** highlight ******** */
+
+      .title {
+        padding: 40px 0 20px;
+        margin-bottom: 30px;
+        border-bottom: 1px solid #fff;
+      }
+      @media only screen and (max-width: 767px) {
+        .title {
+          padding: 20px 0;
+          margin-bottom: 0;
+          border-bottom: 0;
+          text-align: center;
+        }
+      }
+      .title h1,
+      .title h4 {
+        float: left;
+        color: #fff;
+        font-size: 22px;
+        font-weight: 400;
+      }
+      .iframe_video {
+        padding-bottom: 36.8%;
+        padding-top: 0;
+        height: 0;
+        border: 2px solid #fff;
+        border-radius: 5px;
+        position: relative;
+        /* width: 80%; */
+        margin: auto;
+        cursor: pointer;
+      }
+
+      /* ******* key features ****** */
+      .flex {
+        display: flex;
+      }
+      .feature_img {
+        position: relative;
+        width: 65%;
+        background: #1d1d1d;
+      }
+      .feature_img > img {
+        width: 100%;
+      }
+      @media only screen and (max-width: 767px) {
+        .feature_img {
+          width: 100%;
+          height: 240px;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .feature_img > img {
+          position: absolute;
+          width: 100% !important;
+          object-fit: cover;
+          height: 100% !important;
+          z-index: 1;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .feature_section-mobile .feature_img > img {
+          position: unset;
+          height: auto;
+        }
+      }
+      .feature_content {
+        width: 45%;
+        background: #1d1d1d;
+        padding: 4% 4% 0% 4%;
+        color: #fff;
+        position: relative;
+      }
+      @media only screen and (max-width: 767px) {
+        .feature_content {
+          width: 100% !important;
+        }
+      }
+      @media only screen and (max-width: 1024px) {
+        .feature_content {
+          padding: 2%;
+        }
+      }
+      .feature_content p {
+        max-width: 100%;
+        font-size: 15px;
+        line-height: 22px;
+        padding: 15px 0;
+        margin-left: 0px;
+        color: #fff;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .feature_content p {
+          margin: 0 !important;
+          font-size: 14px;
+        }
+      }
+      .feature_content a {
+        margin-left: 0px;
+      }
+      .feature_content a,
+      .feature_img a {
+        color: #fff;
+        font-size: 16px;
+      }
+      .rightImg {
+        order: 2;
+      }
+
+      .feature_content h3,
+      .feature_img h3 {
+        font-family: uni_neueheavy;
+        font-size: 46px;
+        text-transform: uppercase;
+        line-height: 36px;
+        color: #98040d;
+        transform: skewX(-10deg);
+      }
+      @media only screen and (max-width: 1024px) {
+        .feature_content h3,
+        .feature_img h3 {
+          font-size: 24px;
+          line-height: 24px;
+        }
+      }
+      .feature_content a span {
+        font-size: 28px;
+        display: block;
+        color: #98040d !important;
+        white-space: nowrap;
+      }
+      .feature_content a span,
+      .feature_img a span {
+        font-weight: 700;
+        color: #c5a861;
+      }
+      @media only screen and (max-width: 767px) {
+        .feature_content a span {
+          font-size: 16px;
+        }
+      }
+      .feature_content a img,
+      .feature_img a img {
+        display: inline-block;
+        width: 20px;
+        vertical-align: middle;
+        margin-left: 5px;
+        transition: all 0.2s ease-out;
+      }
+
+      /* ********* varient price section ********* */
+
+      .compare-variants {
+        padding: 40px 0 20px 0;
+        background: #2d2d2b;
+      }
+      @media only screen and (max-width: 767px) {
+        .compare-variants {
+          margin: 20px 0 10px 0 !important;
+        }
+      }
+      .h4,
+      h4 {
+        font-size: calc(1.275rem + 0.3vw);
+      }
+      .h1,
+      .h2,
+      .h3,
+      .h4,
+      .h5,
+      .h6,
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        margin-top: 0;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+        line-height: 1.2;
+        color: var(--bs-heading-color);
+      }
+      .compare-variants h4 {
+        color: #98040d;
+        font-size: 22px;
+        float: left;
+      }
+      @media only screen and (max-width: 767px) {
+        .compare-variants h4 {
+          font-size: 26px !important;
+          padding: 20px 0 !important;
+        }
+      }
+      .compare-variants a {
+        float: right;
+      }
+      @media only screen and (max-width: 767px) {
+        .compare-variants a {
+          float: left !important;
+        }
+      }
+      .compare-variants img {
+        display: inline;
+        margin: 0px 15px;
+      }
+      .card {
+        padding-top: 40px;
+        background: none;
+      }
+      @media only screen and (max-width: 767px) {
+        .card {
+          padding-top: 20px !important;
+        }
+      }
+      #divData {
+        background-color: #fff;
+      }
+      .border-top-none {
+        border-top: none;
+      }
+      .tab_links {
+        border-bottom: 1px solid #2b2b2b;
+        margin: 0 50px;
+      }
+      @media only screen and (max-width: 767px) {
+        .tab_links {
+          margin: 0 !important;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .tab_btn {
+          width: 100% !important;
+        }
+      }
+      .slick-list {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .slick-list,
+      .slick-slider,
+      .slick-track {
+        position: relative;
+        display: block;
+      }
+      .slick-track {
+        top: 0;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .slick-initialized .slick-slide {
+        display: block;
+      }
+      .slick-slide,
+      .width10,
+      .width15,
+      .width16,
+      .width20,
+      .width25,
+      .width30,
+      .width33,
+      .width40,
+      .width50,
+      .width55,
+      .width60,
+      .width66,
+      .width70,
+      .width75,
+      .width80,
+      .width90 {
+        float: left;
+        min-height: 1px;
+      }
+      .compare_tabs .tab_anchor {
+        margin-right: 100px;
+      }
+
+      .tab_anchor {
+        cursor: pointer;
+      }
+      @media only screen and (max-width: 767px) {
+        .compare_tabs .tab_anchor,
+        .variants_price_section .tab_section .review_btn .tab_anchor,
+        .variants_price_section .tab_section .tab_btn .tab_anchor {
+          margin-right: 0 !important;
+          padding-right: 40px !important;
+        }
+      }
+      .tab_links .slick-current .tab_anchor h5 {
+        display: inline-block;
+        color: #98040d;
+        border-bottom: 4px solid #98040d;
+      }
+      .tab_anchor h5 {
+        display: inline-block;
+        font-size: 18px;
+        font-weight: 400;
+        color: #7b7b7b;
+        padding-bottom: 10px;
+        border-bottom: 4px solid transparent;
+      }
+      @media only screen and (max-width: 767px) {
+        .tab_anchor h5 {
+          font-size: 15px !important;
+        }
+      }
+      .tab_title {
+        padding: 60px 0 20px;
+        margin: 0 50px;
+        border-bottom: 1px solid #636363;
+      }
+      @media only screen and (max-width: 767px) {
+        .tab_title {
+          padding: 10px 0 0;
+          margin: 0;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .hiddenDesktop {
+          display: block;
+        }
+      }
+      .tab_title h6 {
+        font-size: 22px;
+      }
+      @media only screen and (max-width: 767px) {
+        .tab_title h6 {
+          display: inline-block;
+          font-size: 20px;
+          color: #98040d;
+          border-bottom: 4px solid #98040d;
+          padding-bottom: 10px;
+        }
+      }
+      .border_bottom {
+        border-bottom: 1px solid #636363;
+      }
+      .table_inner {
+        width: 33.3333333%;
+      }
+      #divData .table_inner {
+        flex: auto;
+        width: 33.3333333%;
+        padding: 40px 30px;
+      }
+      @media only screen and (max-width: 767px) {
+        #divData .table_inner {
+          padding: 0px 0px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .variants_price_section
+          .tab_section
+          .main_tabs
+          .tab_table
+          .table_inner {
+          padding-right: 10px;
+        }
+      }
+      .variants_price_section .tab_section .main_tabs .tab_table .table_inner {
+        padding-right: 30px;
+      }
+      @media only screen and (max-width: 767px) {
+        .table_inner {
+          width: auto;
+          margin-bottom: 10px;
+        }
+      }
+      .table_inner p {
+        color: #7b7b7b;
+      }
+      p {
+        line-height: 22px;
+      }
+      @media only screen and (max-width: 767px) {
+        .table_inner p {
+          width: 60%;
+        }
+      }
+      .center {
+        text-align: center;
+      }
+      @media only screen and (max-width: 767px) {
+        .table_inner.center {
+          position: absolute;
+          right: 5%;
+          top: 50%;
+          margin-bottom: 0;
+          -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+        }
+      }
+      #divData .table_inner span {
+        color: #000000;
+      }
+
+      #divData h3 {
+        color: #000000;
+      }
+      .table_inner h3,
+      .table_inner span {
+        font-size: 18px;
+        font-weight: 400;
+        color: #cecece;
+      }
+      @media only screen and (max-width: 767px) {
+        .table_inner h3,
+        .table_inner span {
+          font-size: 16px;
+        }
+      }
+      #divData .tab_table .table_inner:last-child {
+        border-right: 1px solid transparent;
+      }
+      @media only screen and (max-width: 767px) {
+        .compare-variants #divData .table_inner a {
+          float: none;
+        }
+      }
+      .color_thumbnail .slick-current img {
+        opacity: 1;
+      }
+      .color_thumbnail img {
+        cursor: pointer;
+        opacity: 0.4;
+      }
+
+      /* *********** Varient price section ********** */
+
+      .reviews_section {
+        background: #1d1d1d;
+        padding: 50px 0 20px 0;
+      }
+      .tabswidth60 {
+        width: 60%;
+      }
+      @media only screen and (max-width: 991px) {
+        .tabswidth60 {
+          width: 100%;
+        }
+      }
+      .variants_price_section .tab_section .review_btn .tab_anchor {
+        margin-right: 40px;
+      }
+
+      .tab_anchor {
+        cursor: pointer;
+      }
+      @media only screen and (max-width: 767px) {
+        .variants_price_section .tab_section .review_btn .tab_anchor {
+          margin-right: 0;
+          padding-right: 20px;
+        }
+      }
+
+      @media only screen and (max-width: 767px) {
+        .compare_tabs .tab_anchor,
+        .variants_price_section .tab_section .review_btn .tab_anchor,
+        .variants_price_section .tab_section .tab_btn .tab_anchor {
+          margin-right: 0;
+          padding-right: 40px;
+        }
+      }
+      .review_content p {
+        color: #848484;
+        line-height: 22px;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_content p {
+          line-height: 18px;
+          font-size: 14px;
+        }
+      }
+      .review_content p .t-img {
+        width: auto !important;
+        padding-bottom: 85px;
+        float: left;
+        padding-right: 15px;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_content p .t-img {
+          width: 70px !important;
+          padding-bottom: 0;
+          padding-right: 0px;
+        }
+      }
+      .review_content a {
+        font-size: 15px;
+        display: inline;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_content a {
+          position: static;
+          right: 0;
+          bottom: 20px;
+          font-size: 14px;
+        }
+      }
+      .slick-slide img {
+        display: block;
+      }
+      .review_slider {
+        max-width: 1100px;
+        margin: 0 auto;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_slider {
+          padding: 0 !important;
+        }
+      }
+      @media only screen and (max-width: 991px) {
+        .review_slider {
+          padding: 0 40px;
+        }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .review_slider {
+          padding: 0 60px;
+        }
+      }
+      .slick-next,
+      .slick-next:focus,
+      .slick-next:hover,
+      .slick-prev,
+      .slick-prev:focus,
+      .slick-prev:hover {
+        color: transparent;
+        background: 0 0;
+        outline: 0;
+      }
+      .slick-next,
+      .slick-prev {
+        font-size: 0;
+        line-height: 0;
+        position: absolute;
+        display: block;
+        padding: 0;
+        cursor: pointer;
+        border: none;
+        z-index: 9;
+      }
+
+      .review_slider .slick-prev {
+        left: -60px;
+      }
+
+      .review_slider .slick-next,
+      .review_slider .slick-prev {
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        width: 40px;
+        height: 70px;
+        background: #98040d;
+      }
+      .review_slider .slick-prev {
+        left: -60px;
+      }
+      @media only screen and (max-width: 1024px) {
+        .review_slider .slick-prev {
+          left: 0;
+        }
+      }
+
+      .slick-next:before,
+      .slick-prev:before {
+        font-family: slick;
+        font-size: 20px;
+        line-height: 1;
+        color: #fff;
+      }
+      .review_slider .slick-next:before,
+      .review_slider .slick-prev:before {
+        content: "";
+        display: block;
+        height: 15px;
+        width: 15px;
+        border-top: 2px solid #fff;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_slider .slick-next,
+        .review_slider .slick-prev {
+          width: 20px;
+          height: 60px px;
+          margin-top: 50vh !important;
+        }
+      }
+
+      .review_slider .slick-prev:before {
+        border-left: 2px solid #fff;
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        -moz-transform: rotate(-45deg);
+        margin-left: 15px;
+      }
+      .slide-color-review {
+        width: calc(100vw / 7) !important;
+        white-space: nowrap !important;
+        margin: auto !important;
+      }
+      .slick-slide-self {
+        width: calc((100vw - 120px) / 3) !important;
+      }
+      @media screen and (max-width: 767px) {
+        .slick-slide-self {
+          width: calc((100vw - 120px) / 1) !important;
+        }
+      }
+      .review_slider .slick-next {
+        right: -60px;
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .review_slider .slick-next {
+          right: 0px !important;
+        }
+      }
+
+      .review_slider .slick-next:before {
+        border-right: 2px solid #fff;
+        transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        margin-left: 8px;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_slider .slick-next:before,
+        .review_slider .slick-prev:before {
+          height: 7px;
+          width: 7px;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .review_slider .slick-prev:before {
+          margin-left: 6px;
+        }
+      }
+
+      .text-right {
+        text-align: right;
+      }
+      .reviews-btn,
+      .reviews-btn:hover {
+        text-decoration: underline;
+        color: #fff;
+      }
+      .review_content h6 {
+        font-size: 18px;
+        padding: 15px 0;
+        color: #e4e4e4;
+        border-bottom: 1px solid #2b2b2b;
+        margin-bottom: 15px;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_content h6 {
+          font-size: 16px;
+          font-weight: normal;
+        }
+      }
+      .slick-list {
+        overflow: hidden;
+      }
+      .slick-list,
+      .slick-slider,
+      .slick-track {
+        position: relative;
+        display: block !important;
+      }
+      .slick-list {
+        margin: 0;
+        padding: 0;
+      }
+      .slick-slider .slick-list,
+      .slick-slider .slick-track {
+        transform: translate3d(0, 0, 0);
+      }
+      .review_content {
+        position: relative;
+        margin: 20px 10px;
+      }
+      @media only screen and (max-width: 767px) {
+        .review_content {
+          margin: 15px;
+          padding: 5px 15px 15px 15px;
+          border: 1px solid #555;
+        }
+      }
+
+      /* ********* floating buttons ******** */
+
+      .floating_btns {
+        position: fixed;
+        text-align: center;
+        width: 100%;
+        bottom: 0px;
+        z-index: 9998;
+        box-shadow: rgb(0, 0, 0) 0px 0px 20px;
+        background: rgb(32, 32, 32);
+      }
+      .floating_btns > .right_nexon_details {
+        padding: 15px 0px;
+      }
+      .right_nexon_details a.test_drive_btn {
+        background: transparent;
+        border: 1px solid #fff;
+        margin: 10px 0;
+      }
+      .floating_btns > .right_nexon_details > a {
+        display: inline-block;
+        width: 25%;
+      }
+      .right_nexon_details a.offer_btn {
+        color: rgb(255, 255, 255);
+        background: transparent;
+        border-width: 1px;
+        border-style: solid;
+        border-color: rgb(255, 255, 255);
+        border-image: initial;
+      }
+      .right_nexon_details a.chat_btn {
+        background: transparent;
+        border: 1px solid #fff;
+        color: #fff;
+      }
+      @media only screen and (max-width: 767px) {
+        .floating_btns > .right_nexon_details a.test_drive_btn {
+          height: 50px;
+          line-height: 50px;
+          margin: 0px 0px 0px 10px;
+          background: rgb(152, 4, 13);
+          border-width: 1px;
+          border-style: solid;
+          border-color: rgb(152, 4, 13);
+          border-image: initial;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .right_nexon_details a.chat_btn {
+          display: none;
+        }
+      }
+      @media only screen and (max-width: 1024px) {
+        .floating_btns > .right_nexon_details a.offer_btn,
+        .floating_btns > .right_nexon_details a.test_drive_btn,
+        .floating_btns > .right_nexon_details a.chat_btn {
+          margin: 0px 10px;
+        }
+      }
+
+      /* *********** price note ***********/
+
+      .price_note {
+        text-align: center;
+        padding: 20px 0;
+        background: #202020;
+        color: #fff;
+        margin-top: 20px;
+      }
+      @media only screen and (max-width: 767px) {
+        .price_note {
+          text-align: left;
+          padding: 15px;
+        }
+      }
+
+      /* ********** footer **************** */
+
+      footer {
+        padding-bottom: 79px;
+      }
+      .footer-note {
+        background-color: #0b0b0b;
+      }
+      .top_footer {
+        background: #000;
+        padding: 30px 0;
+      }
+      .top_footer .flex {
+        align-items: center;
+        padding: 0 10px;
+      }
+      @media only screen and (max-width: 767px) {
+        .social,
+        .top_footer {
+          text-align: center;
+        }
+      }
+
+      .call_assistance,
+      .social,
+      .tnc {
+        flex: 1 1 auto;
+      }
+      .call_assistance a {
+        font-size: 18px;
+        color: #98040d;
+        padding-bottom: 5px;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .call_assistance a {
+          font-size: 16px !important;
+        }
+      }
+      .call_assistance a:hover,
+      .tnc a {
+        color: #fff !important;
+      }
+      @media only screen and (max-width: 767px) {
+        .tnc {
+          padding: 30px 0 !important;
+        }
+      }
+      @media only screen and (max-width: 767px) {
+        .top_footer .flex {
+          padding: 0 20px;
+        }
+      }
+
+      @media only screen and (max-width: 1024px) {
+        .top_footer .flex {
+          padding: 0;
+        }
+      }
+
+      /* 
+      
+      // */
+
+      /* // */
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo_header">
+        <div class="max_width">
+          <div class="all_logo">
+            <div class="logo">
+              <a href="https://cars.tatamotors.com/">
+                <img
+                  src="https://cars.tatamotors.com/images/tata-motors-logo.png"
+                  alt="tata-motors-logo"
+                  width="179"
+                  height="45"
+              /></a>
+            </div>
+            <div class="logo"></div>
+            <div class="logo">
+              <a href="https://www.tata.com/">
+                <img
+                  src="	https://cars.tatamotors.com/images/tata-logo.png"
+                  alt="tata-motors-logo"
+                  width="74"
+                  height="61"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="screen_loader d-none"></div>
+      <div class="main_navbar">
+        <div>
+          <div class="mobile_hamburger hiddenDesktop">
+            <a href="javascript:;">
+              <span></span>
+            </a>
+          </div>
+          <nav class="firstNav">
+            <ul>
+              <li class="dropdown model-nav">
+                <a href="javascript:;"> Brands </a>
+                <ul class="showInMobile"></ul>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;"> About </a>
+                <ul class="showInMobile"></ul>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;"> Owners </a>
+                <ul class="showInMobile"></ul>
+              </li>
+              <li class="dropdown">
+                <a href="javascript:;"> Shopping </a>
+                <ul class="showInMobile"></ul>
+              </li>
+              <li calss="built_btn_topmenu">
+                <a
+                  class="virtual_link_topmenu hideexcepthomepage"
+                  href="https://imaginator-cars.tatamotors.com"
+                  target="_blank"
+                >
+                  <i>imaginator</i>
+                </a>
+              </li>
+              <li calss="built_btn_topmenu">
+                <a
+                  class="virtual_link_topmenu"
+                  href="https://soul.tatamotors.com/#explore"
+                  target="_blank"
+                >
+                  <i>Soul</i>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="navigation">
+          <div class="max_width">
+            <nav class="greedy-nav harrier-nav">
+              <button class="menuOpen" count="2">
+                <div class="hamburger"></div>
+              </button>
+              <button class="menuClose" count="2">
+                <div class="hamburger togglehamburger"></div>
+              </button>
+              <ul class="visible-links">
+                <li>
+                  <a
+                    class="active"
+                    href="https://cars.tatamotors.com/suv/harrier"
+                    >Overview</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier"
+                    >Kaziranga</a
+                  >
+                </li>
+                <li class="build_btn camo_btn_bg">
+                  <a
+                    style="
+                      background: url(https://cars.tatamotors.com/images/harrier/camo/btn-camo-bg.gif)
+                        no-repeat center center;
+                    "
+                    href="https://cars.tatamotors.com/suv/harrier/dark"
+                    >Dark</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier/features"
+                    >features</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://cars.tatamotors.com/suv/harrier/specifications"
+                    >specifications</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier/variants"
+                    >variants</a
+                  >
+                </li>
+                <li>
+                  <a
+                    class="text-nowrap"
+                    href="https://cars.tatamotors.com/suv/harrier/colors"
+                    >360 & Colours</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier/price"
+                    >price</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier/gallery"
+                    >gallery</a
+                  >
+                </li>
+                <li>
+                  <a href="https://cars.tatamotors.com/suv/harrier/downloads"
+                    >downloads</a
+                  >
+                </li>
+              </ul>
+              <ul class="hidden-links hidden"></ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="clearHeight"></div>
+    <section class="banner_section">
+      <img
+        style="width: 100%; top: 15px; position: relative"
+        src="https://cars.tatamotors.com/images/harrier/harrier-adventure-persona-d-banner.png"
+        alt="banner"
+      />
+    </section>
+    <section class="lead_form bg-green">
+      <section class="max_width">
+        <p>
+          Born of legendary Land Rover pedigree, the All New-Harrier is now
+          available with an advanced 6 Speed Automatic Transmission, packed with
+          a host of exciting features and advanced enhancements.
+        </p>
+      </section>
+    </section>
+    <section style="display: flex" class="nexon_details green-div">
+      <div class="dark_card w-100">
+        <div class="max_width flex">
+          <div class="width75 tabWidth70">
+            <div class="left_nexon_details">
+              <h1>TATA HARRIER</h1>
+              <div class="reviews_nexon">
+                <span>
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAMAAACGE/kZAAABGlBMVEUAAAD8yQD/1QD7yQD+0AD/0wD/1wD4wQD3wAD/1AD4wQD5xAD9zAD/0gD4wQD8ygD8zAD7xwD4wQD4wgD/0gD5xQD7ygD8ygD/0wD5wwD5xAD/1AD4wwD/1QD7xwD9zQD/0gD8zAD+0AD2vAD/2QD/1AD9zgD4wAD9zwD4wgD8ygD/1AD/0AD/1AD/1AD/0gD/1AD4wgD9zAD4wQD/1AD6xwD/0gD/0gD/1AD4wgD7xwD6xwD9zgD3wAD5xQD8ygD8ywD3vwD+0AD4wgD/0gD/0gD4wgD/1gD4wgD7yQD4wgD4wgD/0gD/0gD3vwD/1QD3vwD/1QD3vwD4wgD/0gD/1QD3vwD6yAD3vgD+zwD1vAD5xAD8ygD/2gDCBLnEAAAAU3RSTlMA8vz4+Vr9Wv38+vkQ+oIV+vXtMf78+/nt0ohgXE41HAX+/Pz6+fj39O/b1sW9ta6cnI55cm9lVlRPSEM9Ofru6efk2NDNzcm5rKulk4BUKyEJCdUzG/cAAAGhSURBVDjLhdJ3U4MwGAZwIIi0FDvsstZa99571L23vnkToPX7fw0TWusVOPP8wSXcjzyX99BiOf3UlPlaflejFt9VoxG+pkaX3MiozCgr47iyjem4qkJjAhUzijZgukEPFG0h2lC0hYj+25eBLpqIvD9+Hern8NELEa6+DcvU6+KxU29qjbE2n/IpilCKxBMITWAAjDFo845fDY/dEbsSr0xPpxAtEuQt0w6YDSUyZbqIm7/3vpaf2ek8yZlzRF9cSBOy6KYMRFo91PrZAhkJIb98XnTFmVRmfeCaR0tdFpRyF3rOQhom+tNMPgjjObnZMjFnHFOyldOEYXtA3G9zJj9bCdKkiJtNLSEnvoWuE+iW4XgM9rTETCC1enNKA4wkoxuK83Y4caviwVKimaQ05TCJxOKMwXESGhdlNgDjSKksfE5Ca7IMYKG2IiZkEK+QYLIURRncfWjNDXFUClgjjvaxLEytu5aFbCuO1n0GhaPepnFLkRfibXNt9pT9278gtluxu3W8wRkfVP1aFF0VRqP/+z3PRia5ndVi2T7pLX4AoNNZm5UIGQkAAAAASUVORK5CYII="
+                    alt=""
+                    title=""
+                    width="36"
+                    height="33"
+                  />
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAMAAACGE/kZAAABGlBMVEUAAAD8yQD/1QD7yQD+0AD/0wD/1wD4wQD3wAD/1AD4wQD5xAD9zAD/0gD4wQD8ygD8zAD7xwD4wQD4wgD/0gD5xQD7ygD8ygD/0wD5wwD5xAD/1AD4wwD/1QD7xwD9zQD/0gD8zAD+0AD2vAD/2QD/1AD9zgD4wAD9zwD4wgD8ygD/1AD/0AD/1AD/1AD/0gD/1AD4wgD9zAD4wQD/1AD6xwD/0gD/0gD/1AD4wgD7xwD6xwD9zgD3wAD5xQD8ygD8ywD3vwD+0AD4wgD/0gD/0gD4wgD/1gD4wgD7yQD4wgD4wgD/0gD/0gD3vwD/1QD3vwD/1QD3vwD4wgD/0gD/1QD3vwD6yAD3vgD+zwD1vAD5xAD8ygD/2gDCBLnEAAAAU3RSTlMA8vz4+Vr9Wv38+vkQ+oIV+vXtMf78+/nt0ohgXE41HAX+/Pz6+fj39O/b1sW9ta6cnI55cm9lVlRPSEM9Ofru6efk2NDNzcm5rKulk4BUKyEJCdUzG/cAAAGhSURBVDjLhdJ3U4MwGAZwIIi0FDvsstZa99571L23vnkToPX7fw0TWusVOPP8wSXcjzyX99BiOf3UlPlaflejFt9VoxG+pkaX3MiozCgr47iyjem4qkJjAhUzijZgukEPFG0h2lC0hYj+25eBLpqIvD9+Hern8NELEa6+DcvU6+KxU29qjbE2n/IpilCKxBMITWAAjDFo845fDY/dEbsSr0xPpxAtEuQt0w6YDSUyZbqIm7/3vpaf2ek8yZlzRF9cSBOy6KYMRFo91PrZAhkJIb98XnTFmVRmfeCaR0tdFpRyF3rOQhom+tNMPgjjObnZMjFnHFOyldOEYXtA3G9zJj9bCdKkiJtNLSEnvoWuE+iW4XgM9rTETCC1enNKA4wkoxuK83Y4caviwVKimaQ05TCJxOKMwXESGhdlNgDjSKksfE5Ca7IMYKG2IiZkEK+QYLIURRncfWjNDXFUClgjjvaxLEytu5aFbCuO1n0GhaPepnFLkRfibXNt9pT9278gtluxu3W8wRkfVP1aFF0VRqP/+z3PRia5ndVi2T7pLX4AoNNZm5UIGQkAAAAASUVORK5CYII="
+                    alt=""
+                    title=""
+                    width="36"
+                    height="33"
+                  />
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAMAAACGE/kZAAABGlBMVEUAAAD8yQD/1QD7yQD+0AD/0wD/1wD4wQD3wAD/1AD4wQD5xAD9zAD/0gD4wQD8ygD8zAD7xwD4wQD4wgD/0gD5xQD7ygD8ygD/0wD5wwD5xAD/1AD4wwD/1QD7xwD9zQD/0gD8zAD+0AD2vAD/2QD/1AD9zgD4wAD9zwD4wgD8ygD/1AD/0AD/1AD/1AD/0gD/1AD4wgD9zAD4wQD/1AD6xwD/0gD/0gD/1AD4wgD7xwD6xwD9zgD3wAD5xQD8ygD8ywD3vwD+0AD4wgD/0gD/0gD4wgD/1gD4wgD7yQD4wgD4wgD/0gD/0gD3vwD/1QD3vwD/1QD3vwD4wgD/0gD/1QD3vwD6yAD3vgD+zwD1vAD5xAD8ygD/2gDCBLnEAAAAU3RSTlMA8vz4+Vr9Wv38+vkQ+oIV+vXtMf78+/nt0ohgXE41HAX+/Pz6+fj39O/b1sW9ta6cnI55cm9lVlRPSEM9Ofru6efk2NDNzcm5rKulk4BUKyEJCdUzG/cAAAGhSURBVDjLhdJ3U4MwGAZwIIi0FDvsstZa99571L23vnkToPX7fw0TWusVOPP8wSXcjzyX99BiOf3UlPlaflejFt9VoxG+pkaX3MiozCgr47iyjem4qkJjAhUzijZgukEPFG0h2lC0hYj+25eBLpqIvD9+Hern8NELEa6+DcvU6+KxU29qjbE2n/IpilCKxBMITWAAjDFo845fDY/dEbsSr0xPpxAtEuQt0w6YDSUyZbqIm7/3vpaf2ek8yZlzRF9cSBOy6KYMRFo91PrZAhkJIb98XnTFmVRmfeCaR0tdFpRyF3rOQhom+tNMPgjjObnZMjFnHFOyldOEYXtA3G9zJj9bCdKkiJtNLSEnvoWuE+iW4XgM9rTETCC1enNKA4wkoxuK83Y4caviwVKimaQ05TCJxOKMwXESGhdlNgDjSKksfE5Ca7IMYKG2IiZkEK+QYLIURRncfWjNDXFUClgjjvaxLEytu5aFbCuO1n0GhaPepnFLkRfibXNt9pT9278gtluxu3W8wRkfVP1aFF0VRqP/+z3PRia5ndVi2T7pLX4AoNNZm5UIGQkAAAAASUVORK5CYII="
+                    alt=""
+                    title=""
+                    width="36"
+                    height="33"
+                  />
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAMAAACGE/kZAAABGlBMVEUAAAD8yQD/1QD7yQD+0AD/0wD/1wD4wQD3wAD/1AD4wQD5xAD9zAD/0gD4wQD8ygD8zAD7xwD4wQD4wgD/0gD5xQD7ygD8ygD/0wD5wwD5xAD/1AD4wwD/1QD7xwD9zQD/0gD8zAD+0AD2vAD/2QD/1AD9zgD4wAD9zwD4wgD8ygD/1AD/0AD/1AD/1AD/0gD/1AD4wgD9zAD4wQD/1AD6xwD/0gD/0gD/1AD4wgD7xwD6xwD9zgD3wAD5xQD8ygD8ywD3vwD+0AD4wgD/0gD/0gD4wgD/1gD4wgD7yQD4wgD4wgD/0gD/0gD3vwD/1QD3vwD/1QD3vwD4wgD/0gD/1QD3vwD6yAD3vgD+zwD1vAD5xAD8ygD/2gDCBLnEAAAAU3RSTlMA8vz4+Vr9Wv38+vkQ+oIV+vXtMf78+/nt0ohgXE41HAX+/Pz6+fj39O/b1sW9ta6cnI55cm9lVlRPSEM9Ofru6efk2NDNzcm5rKulk4BUKyEJCdUzG/cAAAGhSURBVDjLhdJ3U4MwGAZwIIi0FDvsstZa99571L23vnkToPX7fw0TWusVOPP8wSXcjzyX99BiOf3UlPlaflejFt9VoxG+pkaX3MiozCgr47iyjem4qkJjAhUzijZgukEPFG0h2lC0hYj+25eBLpqIvD9+Hern8NELEa6+DcvU6+KxU29qjbE2n/IpilCKxBMITWAAjDFo845fDY/dEbsSr0xPpxAtEuQt0w6YDSUyZbqIm7/3vpaf2ek8yZlzRF9cSBOy6KYMRFo91PrZAhkJIb98XnTFmVRmfeCaR0tdFpRyF3rOQhom+tNMPgjjObnZMjFnHFOyldOEYXtA3G9zJj9bCdKkiJtNLSEnvoWuE+iW4XgM9rTETCC1enNKA4wkoxuK83Y4caviwVKimaQ05TCJxOKMwXESGhdlNgDjSKksfE5Ca7IMYKG2IiZkEK+QYLIURRncfWjNDXFUClgjjvaxLEytu5aFbCuO1n0GhaPepnFLkRfibXNt9pT9278gtluxu3W8wRkfVP1aFF0VRqP/+z3PRia5ndVi2T7pLX4AoNNZm5UIGQkAAAAASUVORK5CYII="
+                    alt=""
+                    title=""
+                    width="36"
+                    height="33"
+                  />
+                  <img
+                    src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAhCAYAAACxzQkrAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoV2luZG93cykiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6QTQyOUM5ODg2OUM4MTFFQTgxNTFFMzE4MjNBMEE2ODQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6QTQyOUM5ODk2OUM4MTFFQTgxNTFFMzE4MjNBMEE2ODQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpBNDI5Qzk4NjY5QzgxMUVBODE1MUUzMTgyM0EwQTY4NCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDpBNDI5Qzk4NzY5QzgxMUVBODE1MUUzMTgyM0EwQTY4NCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PkPdAT0AAASDSURBVHjazFhNiBxFGH3V1d0z4252h8RAQCFHISbR+LOYJcRfRMnBTUAMSA5BTVAMBlTUQy5LCOSyIJ5EcxYhoFdBkCTIqpjgDyp4EUkQxGSzu3FnZ6q7q3xfTWdnZmdch5mWTYeiunu6vnr13lfvqw1QwJVdwoT7CeUiYgXDBlj+AhWXooqCrqEBQeFea/EZHB66JQAphafz2xO3BCBn8VLO1MPZt8NLNxSg+nnsYrdFBUjZ66CMqfVlyGG/J8dh2T+nOVvrBYjMTK2KtntY2YJh5HIOO9rtyGOM8eT6MJTL1eM6uC6AuuRqXfuHkW0gQDLhKrk6g1awd1BAYTKLp8IRuqzCr306s0mXcJDlAirs8btmS/AWS0pMFuMeFDRJsPzXurby7eXSOD6WkNfMAg5woh0yQRDCBZoGrPPgWJW2jqsY9U8NAitxXAcYl8CYRUzyafLmby7rcHaRG6rEudgHkV/YHAEdVncjWQlXP4d36Lqn/CDtW8amOchw53honhGVwwxg00Uk5gZK8QhqYRVl10DamEdoU86luWq6Nye/yDjjXKhl/yf73/kuYpQ3GeUkF3hGbceLLQG6nfcjtrvaV8WvLFeW6ZhiBNAMHAiTApAsOQYxKkaQLHAaAtZlL8frXMj7BDbCMVW+v4xtrinTj2qGz6LKGwRztjMjenvMh+xe6NrpWSdA9pGOUCPAP/h2E4FUvV9Lnigs8f4OfnU7+7/Z5ti2s53nr1/aOp7XD2C+r11W3usplG3dMSCXUvIoyBJEXtaI9CuM8V2YGYKJmiwRyBibrH6D5Cnba2zfc8ZpsrKvF5h/ZWglhy/izmQJZ3i74r6yuyiFIRtKc6p0gTEc5WR61696ubJo1Ccts4bTZ/iUw8Z5t8UaHNX34cLam7ifMnEO05TrhOQMJ26EFYYvI3I1GAERjfDdRkTZAlxjETFlTCSP+F3s+WLiEtzLaidz8D9dpc/LzOLxsIzPVdk7iKw84fZ2aR1xaQNu6DEmr4Uz15GRiVgii7zc1sfj3Xi3cKeOOKGKvekFfssvw8rEwU2vsuJQZGvUA0lU/p7fbPp/SkeGaW+MnMguIyGgqMups2buUConuZZrcKxwQJLc7O7Jq3yW1nxe9B5LBvVtNNQSktwmqlKeCgXE4E80daNUS0jpxKFqKyvW+a2t2zJTEt3RkX0S0yIOFS3ZoQ6pgtY4GmSd8pwmY790SBc1HdtL5wpkKP0Gm5mwj/n7bqku8RiyrbQHb/MbkfST9lLLU0QoecaCsZGyPVgIIC1/SWhfs1Kb8EihVw5op+no91cexW/+mR7DdoC3R1oHWuh4DCaX7WgxkvFk6IwHFOZlQ2rSlGell7HtxAf8dkLYy6WLdWXNI2//xihyccdcMfOIyY74y1ma4yvhBP7q69j9A94ju696Y73OHEwxWXkEswMzRDD7shrBGC/dcUr0bL9gcraOkaXnmF9z3HVy+HtmqD/a7He4wjp2LT8nDf7fNXIG/xlfm69YamSTDBSEZshAMwMH6A1sRmriWt/8I8AAcwWICAQDOFQAAAAASUVORK5CYII="
+                    alt=""
+                    title=""
+                    width="36"
+                    height="33"
+                  />
+                </span>
+                <small>( 4.7 Based on User Reviews * )</small>
+              </div>
+              <h4 id="lblPriceRange">₹14.69 - 22.04 Lakh*</h4>
+              <!-- <p>*Prices Ex Showroom. One India, One Price.</p> -->
+              <!-- <p>*Revised Prices are being updated.</p> -->
+              <p>
+                *Ex Showroom price in
+                <input
+                  type="text"
+                  id="txtWhereami"
+                  name="txtWhereAmI"
+                  class="form-control whereami ui-autocomplete-input"
+                  data-old-value="mumbai"
+                  placeholder="Type to search"
+                  autocomplete="off"
+                />
+                <a class="whereami">Change</a>
+              </p>
+              <div class="city_box">
+                <h4>Popular Cities</h4>
+                <ul id="ulcities">
+                  <li><a>New Delhi</a></li>
+                  <li><a>Mumbai</a></li>
+                  <li><a>Chennai</a></li>
+                  <li><a>Kolkata</a></li>
+                  <li><a>Pune</a></li>
+                  <li><a>Bangalore</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="width25 tabWidth30 hiddenMobile">
+            <div class="right_nexon_details">
+              <a
+                class="offer_btn openLogin"
+                onclick="DataLayerGetBestOffer('SUVS', 'HARRIER')"
+                >Get Best Offers</a
+              >
+              <a
+                class="test_drive_btn openLogin"
+                rel="noopener"
+                style="display: none"
+                ><span>Book a Test Drive</span>
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADgAAAA4CAMAAACfWMssAAAAhFBMVEUAAAD///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////8g2+bRAAAAK3RSTlMA+RfuMIcF5BBZek6Ou5enIAor1MfbzibCZfNGN19TPa6BdWtCoZxw37Toq6oADAAABENJREFUSMeNVYmWqjAMtUBlBxVkcwfB5f7//70mpYP6HJ17PLW0TZPcLJ29w9zZJZULhXue1M5y9jeESQOCsG0BRu/Pv0otL6SpinzHosOes5cxADuwPssFAoj9l0OenwI4fRA7Z8DgvNtZRcA1/E1OAreV+bCc0PfD7Y/yRQok76mMgd0o5B/vGGHf6sVIWoP8jadehkwvb1MouPEQySG+QuF41kdi2Iv/5FwceeLcgCYJvR+aN5HSHh/4I0FTvti5RqppBa7da9R2GSB5FsH2nrZirc+rgMs7AmqBgq0ckD3zyZ8LF3n5nnErRuOwikduHcCjzQb97FdEAEnOG0zxvMInGlxEH7MKgmg/oDEctKjoL9f8fNK5pr8UciRcwOILs9kXxBiIQTpPuLCmBWB9LR3BbsrRJRtEdKXi8BU+G7sEyMsNYjWWuM/+gAwbNR6xV2OPPc/rvwiWKKj8kKu4CIqhxzZ8h9UwE42SWSHXxu9Wz2cWB98/l08rdQ4g4IicZztItlTBHnalOROswXBPq9HIrgKQJcg4ECdVKT4zG8octBPVvt/eaNZL2RcAiqhtI5q4kSouQYxuFaE5VsZFax+todFIoyi4jqqlLsmbPu8qXR7dsHbGruQH8lSf58paGccRiTv7ut47htaKgwChftROAKwvy+eUZsincq/J4o5dm8FmUvMcECdvqlygdVYX4DSJtTZQxEyrawRVvjk9IHYmXsCW2RUw7Sm8A+lhFo6CxtSETiXATWd6Z0rzhEDnd6rEVuzCRZtqY0nk3Hj7kMFmTRE2pjkcmbMrXC78MXwCs8LQq5GAN6TpD2ekPKIfy76Co/Sr8wPTy2FldCy5VyYwUuruoeHInHQQK/ok1/bB7OyhtM1d7dsOYqkcmUpngTXfLpVwxexHD9WKUi2jaC8VlK+WeKjxgPX0ankOYseiqBi0VNROAYW1ejWKx+bncng43VLmISZXDY4YiOK2PTNP+bSzRUY7KDiGN6b9+pBaAtvJKbrdIGctPTM/10Vd0IdBODWECt20voGrm91S+5tQiCEebi5MAmz5qIGNA3Mw6GzSxkREr8EBmVEYTqspUu2IZfKR0yp7ZC8bk/yR7QDunJMrmSwgwyyBYHpL9W7wsFQDJftEHpqEbGjuYNLpQdDta5STPu23S0lokOhYOQJHyxBPyVz+BGnej3JH8mtCoYlaZGh2xvGODJZjArtwue1IZnmCZyMyZZWHP/UkdT5tYqBf6mwUi5e+LUauDgW1QnU7XR0r4lfUm9c6KBLKgReUd8SeTpsKQKOGrrOR2wByX/uZQqggvcIrYG9MF87xg8w8AtsrruWrlPFvsAyLq7ALgm7vLM29EZDOf3twbeBkvX3eWgFRf3jkJYA0fF3eDAAi6/OTS6J2ejlYc61q2/V3AMlq9g2eH4Nhu64NRrVjbd9hnU+3tYCCuMZy81bqH11WfiWRFyF3AAAAAElFTkSuQmCC"
+                  alt=""
+                  title=""
+                  width="56"
+                  height="56"
+              /></a>
+              <a
+                class="test_drive_btn openTestDrive"
+                rel="noopener"
+                onclick="DataLayerBookATestDrive('SUVS', 'HARRIER')"
+                ><span>Book a Test Drive</span>
+                <img
+                  src="blob:https://harrier.tatamotors.com/0e568229-ab78-489b-895d-8f19939088ff"
+                  alt=""
+                  title=""
+                  width="56"
+                  height="56"
+              /></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="lead_form green-div">
+      <div class="max_width">
+        <h4>Request a Call back</h4>
+        <div class="home_lead_form clear">
+          <form id="demo-form-TD" action="" method="POST">
+            <div class="clear">
+              <div class="width25 paddingRight">
+                <div class="input-container">
+                  <input
+                    id="NameTD"
+                    name="NameTD"
+                    class="floatlabel"
+                    type="text"
+                    maxlength="100"
+                    onkeypress="return onlyAlphabets(event,this);"
+                    onkeyup="OnKeyUpValidation_OnPage()"
+                  />
+                  <label for="NameTD">Name*</label>
+                  <span id="lblNameTD" class="error" style="display: none"
+                    >Please enter valid name</span
+                  >
+                </div>
+              </div>
+              <div class="width25 paddingLeft paddingRight">
+                <div class="input-container">
+                  <input
+                    id="EmailTD"
+                    name="EmailTD"
+                    class="floatlabel"
+                    type="text"
+                    onkeyup="OnKeyUpValidation_OnPage()"
+                  />
+                  <label for="email" maxlength="100">Email*</label>
+                  <span id="lblEmailTD" class="error" style="display: none"
+                    >Please enter valid email</span
+                  >
+                </div>
+              </div>
+              <div class="width25 paddingRight">
+                <div class="input-container">
+                  <input
+                    id="MobileTD"
+                    name="MobileTD"
+                    class="floatlabel"
+                    type="text"
+                    maxlength="10"
+                    onkeyup="OnKeyUpValidation_OnPage()"
+                  />
+                  <label for="MobileTD">Mobile number*</label>
+                  <span id="lblMobileTD" class="error" style="display: none"
+                    >Please enter valid Mobile number</span
+                  >
+                </div>
+              </div>
+              <div class="width25 paddingLeft">
+                <!--<div class="btn_popup"><button id="btnSubmitTD" class="disabled">Submit</button></div>
+    <div><span id="lblErrorTD" class="error-msg"></span></div>-->
+                <div class="genrtotp btn_popup">
+                  <a
+                    class="offer_btn openOTP disabled"
+                    id="btnSubmitTD"
+                    onclick="SendOTP_OnPage_Harrier();"
+                    >Submit</a
+                  >
+                </div>
+                <div><span id="lblErrorTD" class="error-msg"></span></div>
+              </div>
+            </div>
+            <div class="clear">
+              <div class="input-container">
+                <div class="checkbox">
+                  <div class="checkbox-group">
+                    <input
+                      type="checkbox"
+                      id="termsandconditionTD"
+                      checked=""
+                      name="Terms&amp;Conditionstd"
+                    />
+                    <label for="termsandconditionTD"
+                      >I agree to the
+                      <a
+                        href="/terms-of-use"
+                        target="_blank"
+                        rel="noopener"
+                        class="green"
+                        >Terms and Conditions</a
+                      >
+                      &amp;
+                      <a
+                        href="/privacy-policy"
+                        target="_blank"
+                        rel="noopener"
+                        class="green"
+                        >Privacy policy
+                      </a>
+                      by Tata Motors.</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="clear">
+              <div class="input-container">
+                <div class="checkbox">
+                  <div class="checkbox-group">
+                    <input
+                      type="checkbox"
+                      id="WhatsappTD"
+                      checked=""
+                      name="subscribewhatsapp"
+                    />
+                    <label for="WhatsappTD">Subscribe with Whatsapp</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <a href="/terms-of-use/" target="_blank" rel="noopener"
+              >*T&amp;C Apply</a
+            >
+          </form>
+        </div>
+        <div class="success_lead" style="display: none">
+          <h5>
+            Your request has been received. We will contact you shortly.
+            <br />
+            <!--<span style="font-size: 13px; padding: 15px 10px 15px 0; display: inline-block;">*There might be a delay in call back due to the COVID situation. We regret the inconvenience.</span>-->
+          </h5>
+        </div>
+      </div>
+    </section>
+    <section class="top-scroll bg-green">
+      <div class="title">
+        <div class="max_width clear">
+          <h4>Explore Key Highlights</h4>
+        </div>
+      </div>
+      <div class="max_width">
+        <div class="clear">
+          <div class="iframe_video" onclick="playVideo();">
+            <img
+              src="https://cars.tatamotors.com/images/harrier/harrier-video-img-new.jpg"
+              alt="Tata Harrier Video Rear View"
+              title="Tata Harrier Video Thumbnail"
+              width="1366"
+              height="645"
+            />
+          </div>
+        </div>
+      </div>
+      <br /><br />
+    </section>
+    <section class="key_feature_section feature_section-mobile">
+      <div class="dark_card">
+        <div class="title">
+          <div class="max_width clear">
+            <h4>Harrier Key Features</h4>
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img">
+            <img
+              class="lazyload"
+              src="https://cars.tatamotors.com/images/harrier/Automatic-headlamps.png"
+              data-src="/images/harrier/Automatic-headlamps.png"
+              alt="Tata Harrier Stunning Impact Design 2.0"
+              title="Tata Harrier Stunning Impact Design"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Stunning Impact Design 2.0</h3>
+            <p class="hiddenMobile">
+              Based on the Impact Design 2.0 philosophy, with strong proportions
+              and expressive surfaces providing an incredible stance, powerful
+              road presence and a sense of dynamism, Harrier is truly Above All.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=design"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutDesign')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Design</span></a
+            >
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img rightImg">
+            <img
+              class="lazyload"
+              src="https://cars.tatamotors.com/images/harrier/6_speed_manual_transmission.png"
+              data-src="/images/harrier/6_speed_manual_transmission.png"
+              alt="Tata Harrier Exhilarating Performance"
+              title="Tata Harrier Exhilarating Performance"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Exhilarating Performance</h3>
+            <p class="hiddenMobile">
+              With an all-new 6 speed Automatic Transmission mated to the next
+              generation Kryotec 170 Turbocharged BS6 Diesel engine makes for an
+              effortless driving experience.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=performance"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutPerformance')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Performance</span></a
+            >
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img">
+            <img
+              class="lazyload"
+              src="	https://cars.tatamotors.com/images/harrier/pedigree-of-omega-arc.png"
+              data-src="/images/harrier/pedigree-of-omega-arc.png"
+              alt="Tata Harrier Pedigree of OMEGA Arc"
+              title="Tata Harrier Pedigree of OMEGA Arc"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Pedigree of OMEGARC</h3>
+            <p class="hiddenMobile">
+              Based on the OMEGA Architecture, with the rich pedigree of Land
+              Rover’s legendary D8 platform running through its veins, the
+              Harrier is a cut Above All.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=omega-arc"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutPedigreeOfOmegarc')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Pedigree of OMEGARC</span></a
+            >
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img rightImg">
+            <img
+              class="lazyload"
+              src="	https://cars.tatamotors.com/images/harrier/features/design/harrier-panoramic-sunroof.jpg"
+              data-src="/images/harrier/features/design/harrier-panoramic-sunroof.jpg"
+              alt="Tata Harrier Sunroof"
+              title="Tata Harrier Sunroof"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Absolute Convenience</h3>
+            <p class="hiddenMobile">
+              Best in class luxurious yet practical interiors and future ready
+              infotainment ensures serene in- cabin experience with a blend of
+              design flourish.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=convenience"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutConvenience')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Convenience</span></a
+            >
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img">
+            <img
+              class="lazyload"
+              src="	https://cars.tatamotors.com/images/harrier/Premium_JBL_Audio.png"
+              data-src="/images/harrier/Premium_JBL_Audio.png"
+              alt="Harrier Infotainment - 9 JBL Speakers"
+              title="Tata Harrier Infotainment - 9 JBL Speakers"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Class Leading Infotainment</h3>
+            <p class="hiddenMobile">
+              Next-gen smartphone connectivity with Android Auto™ &amp; Apple
+              Car Play™ along with best voice recognition technology to access
+              navigation, phone calls, music with a press of a button.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=infotainment"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutInfotainment')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Infotainment</span></a
+            >
+          </div>
+        </div>
+        <div class="feature_card flex">
+          <div class="feature_img rightImg">
+            <img
+              class="lazyload"
+              src="	https://cars.tatamotors.com/images/harrier/6Airbags.png"
+              data-src="/images/harrier/6Airbags.png"
+              alt="Tata Harrier Safety"
+              title="Tata Harrier Safety"
+              width="1081"
+              height="558"
+            />
+          </div>
+          <div class="feature_content">
+            <h3>Top-of-the-line Safety</h3>
+            <p class="hiddenMobile">
+              Instilling a greater sense of confidence every time you take the
+              wheel, the Harrier comes equipped with ESP as a standard feature
+              ensuring safety in difficult driving conditions.
+            </p>
+            <a
+              href="/suv/harrier/features?tab=safety"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','MoreAboutSafety')"
+              >More About
+              <img
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAVBAMAAACj2UNSAAAAKlBMVEUAAAD///////////////////////////////////////////////////+Gu8ovAAAADXRSTlMAg5J2b2nql458XolTOs5jdAAAAFZJREFUGNNjgAO3AAYUIHsVlc9+F01BLUEFV1D5THcdUAV00RRwARUcFESAqblXGO6iAoZFSgjQnHsTTf8EVC+gSnPfNUDh914mRZoDTVoWVZrBDCwNANxxJ8lQ9QDAAAAAAElFTkSuQmCC"
+                alt=""
+                title=""
+                width="30"
+                height="21"
+              /><span>Safety</span></a
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="variants_price_section">
+      <div class="dark_card">
+        <div class="compare-variants">
+          <div class="max_width clear">
+            <h4>Variants and Pricing (BS6)</h4>
+            <a
+              href="/suv/harrier/variants"
+              onclick="DataLayerKnowMore('SUVS','HARRIER','CompareAllVariants')"
+            >
+              Compare all Variants
+              <span
+                ><img
+                  src="https://cars.tatamotors.com/images/harrier/compare-variants-img.png"
+                  width="20"
+                  height="10"
+                  title=""
+                  alt="" /></span
+            ></a>
+          </div>
+
+          <div class="card">
+            <div id="divData">
+              <div class="max_width">
+                <div class="card border-top-none">
+                  <div class="tab_section">
+                    <div class="tab_links hiddenMobile">
+                      <div
+                        class="tab_btn compare_tabs tabswidth50 slick-initialized slick-slider"
+                      >
+                        <div class="slick-list draggable">
+                          <div
+                            class="slick-track"
+                            style="
+                              opacity: 1;
+                              width: 10000px;
+                              transform: translate3d(0px, 0px, 0px);
+                            "
+                          >
+                            <div
+                              class="slick-slide slick-current slick-active"
+                              data-slick-index="0"
+                              aria-hidden="false"
+                            >
+                              <div>
+                                <div style="width: 100%; display: inline-block">
+                                  <div class="tab_anchor">
+                                    <h5>Manual</h5>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              class="slick-slide slick-active"
+                              data-slick-index="1"
+                              aria-hidden="false"
+                            >
+                              <div>
+                                <div style="width: 100%; display: inline-block">
+                                  <div class="tab_anchor">
+                                    <h5>Automatic</h5>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="main_tabs">
+                      <div>
+                        <div id="divDiesel" class="tab_content">
+                          <div class="tab_title hiddenDesktop">
+                            <h6>Manual</h6>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XE</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 14 69 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XE', 'Manual', '1469900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XM</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 16 09 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XM', 'Manual', '1609900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 17 39 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XT', 'Manual', '1739900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XT+</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 18 19 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XT+', 'Manual', '1819900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XT+ DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 18 54 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XT+ DARK', 'Manual', '1854900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 18 79 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ', 'Manual', '1879900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 18 99 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ DT', 'Manual', '1899900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZS</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 19 99 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZS', 'Manual', '1999900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZS DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 19 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZS DT', 'Manual', '2019900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZS DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 34 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZS DARK', 'Manual', '2034900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ+</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 39 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ+', 'Manual', '2039900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ+ DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 59 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ+ DT', 'Manual', '2059900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ+ KZR</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 60 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ+ KZR', 'Manual', '2060900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZ+ DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel, Manual</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 74 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZ+ DARK', 'Manual', '2074900'); return LogButtonClicks('Initiated', 'Modal Form');"
+                                >Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div>
+                        <div id="divDiesel" class="tab_content">
+                          <div class="tab_title hiddenDesktop">
+                            <h6>Automatic</h6>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XMA</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 17 39 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XMA', 'Automatic', '1739900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XTA+</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 19 49 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XTA+', 'Automatic', '1949900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XTA+ DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 19 84 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XTA+ DARK', 'Automatic', '1984900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 09 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA', 'Automatic', '2009900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 20 29 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA DT', 'Automatic', '2029900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZAS</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 29 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZAS', 'Automatic', '2129900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZAS DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 49 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZAS DT', 'Automatic', '2149900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZAS DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 64 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZAS DARK', 'Automatic', '2164900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA+</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 69 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA+', 'Automatic', '2169900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA+ DT</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 89 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA+ DT', 'Automatic', '2189900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA+ KZR</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 21 90 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA+ KZR', 'Automatic', '2190900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                          <div class="tab_table border_bottom flex">
+                            <div class="table_inner">
+                              <h3>HARRIER XZA+ DARK</h3>
+                            </div>
+                            <div class="table_inner">
+                              <p>Diesel,AT</p>
+                            </div>
+                            <div class="table_inner center">
+                              <span> ₹ 22 04 900 </span>
+                            </div>
+                            <div class="table_inner right">
+                              <a
+                                href="javascript:;"
+                                class="openLogin"
+                                onclick="DataLayerGetInTouch('SUVS', 'HARRIER', 'GetBestOffer', 'HARRIER XZA+ DARK', 'Automatic', '2204900'); return LogButtonClicks('Initiated','Modal Form'); "
+                              >
+                                Get Best Offer</a
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <script type="text/javascript">
+                $(document).ready(function () {
+                  initialiseSlick();
+                });
+
+                function initialiseSlick() {
+                  $(".main_tabs").slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: false,
+                    arrows: false,
+                    adaptiveHeight: true,
+                    asNavFor: ".tab_btn",
+                    responsive: [
+                      {
+                        breakpoint: 767,
+                        settings: "unslick",
+                      },
+                    ],
+                  }),
+                    $(".tab_btn").slick({
+                      slidesToShow: 6,
+                      slidesToScroll: 1,
+                      asNavFor: ".main_tabs",
+                      arrows: !1,
+                      dots: !1,
+                      infinite: !1,
+                      variableWidth: !0,
+                      focusOnSelect: !0,
+                    });
+                }
+              </script>
+            </div>
+          </div>
+        </div>
+      </div>
+      <section class="color_section">
+        <div class="dark_card">
+          <div class="title">
+            <div class="max_width clear">
+              <h1>Harrier Colour Variants</h1>
+            </div>
+          </div>
+          <div class="color_slider slick-initialized slick-slider">
+            <div class="slick-list draggable">
+              <div class="slick-track" style="opacity: 1; width: 7049px">
+                <div
+                  class="slick-slide slick-current slick-active"
+                  data-slick-index="0"
+                  aria-hidden="false"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: 0px;
+                    top: 0px;
+                    z-index: 999;
+                    opacity: 1;
+                  "
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="https://cars.tatamotors.com/images/harrier/color/harrier-grassland-desktop.jpg"
+                            data-src="/images/harrier/color/harrier-grassland-desktop.jpg"
+                            alt="Tata Harrier Oberon Black Colour"
+                            title="Tata Harrier Calypso Red Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/harrier-grassland-mobile.jpg"
+                            alt="Oberon Black Color"
+                            title="Oberon Black Color Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="1"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -1007px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/oberon-black-d-color-banner.jpg"
+                            alt="Tata Harrier Oberon Black Colour"
+                            title="Tata Harrier Calypso Red Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/oberon-black-m-color-banner.jpg"
+                            alt="Oberon Black Color"
+                            title="Oberon Black Color Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="2"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -2014px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/royale-blue-harrier-desktop.jpg"
+                            alt="Tata Harrier Royale Blue Colour"
+                            title="Tata Harrier Royale Blue Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/royale-blue-harrier-mobile.jpg"
+                            alt="Royale Blue Color"
+                            title="Royale Blue Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="3"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -3021px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/harrier-tropical-mist-desktop.jpg"
+                            alt="Tata Harrier Tropical Mist"
+                            title="Tata Harrier Tropical Mist"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/harrier-tropical-mist-mobile.jpg"
+                            alt="TRopical Mist Color"
+                            title="TRopical Mist"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="4"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -4028px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/Calypso-Red.jpg"
+                            alt="Tata Harrier Calypso Red Colour"
+                            title="Tata Harrier Calypso Red Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/Calypso-Red-Mob.jpg"
+                            alt="Calypso-Red-Mob"
+                            title="Calypso-Red-Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="5"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -5035px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/Orcus-White.jpg"
+                            alt="Tata Harrier Orcus White Colour"
+                            title="Tata Harrier Orcus White Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/Orcus-White-Mob.jpg"
+                            alt="Orcus-White-Mob"
+                            title="Orcus-White-Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide"
+                  data-slick-index="6"
+                  aria-hidden="true"
+                  tabindex="-1"
+                  style="
+                    width: 1007px;
+                    position: relative;
+                    left: -6042px;
+                    top: 0px;
+                    z-index: 998;
+                    opacity: 0;
+                  "
+                >
+                  <div>
+                    <div style="display: inline-block; width: 100%">
+                      <div class="slider_img">
+                        <span class="hiddenMobile">
+                          <img
+                            class="lazyload img_height"
+                            src="data:image/png;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAApAGQDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAUAQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIQAxAAAAC4AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB//8QAFBABAAAAAAAAAAAAAAAAAAAAYP/aAAgBAQABPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAgEBPwAd/8QAFBEBAAAAAAAAAAAAAAAAAAAAYP/aAAgBAwEBPwAd/9k="
+                            data-src="/images/harrier/color/Daytona-Grey.jpg"
+                            alt="Tata Harrier Daytona Grey Colour"
+                            title="Tata Harrier Daytona Grey Colour"
+                            width="1920"
+                            height="780"
+                          />
+                        </span>
+                        <span class="hiddenDesktop">
+                          <img
+                            class="lazyload img_height_m"
+                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAoHBwkHBgoJCAkLCwoMDxkQDw4ODx4WFxIZJCAmJSMgIyIoLTkwKCo2KyIjMkQyNjs9QEBAJjBGS0U+Sjk/QD3/2wBDAQsLCw8NDx0QEB09KSMpPT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT09PT3/wgARCAAxADIDAREAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAWAQEBAQAAAAAAAAAAAAAAAAAABQb/2gAMAwEAAhADEAAAAK/I1AAAAAAAAAAAAAAAAAAAAAAAAP/EABQQAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQEAAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQIBAT8AR//EABQRAQAAAAAAAAAAAAAAAAAAAFD/2gAIAQMBAT8AR//Z"
+                            data-src="/images/harrier/color/Deytona-Grey-Mob.jpg"
+                            alt="Deytona-Grey-Mob"
+                            title="Deytona-Grey-Mob"
+                            width="1080"
+                            height="1139"
+                          />
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="width: 100vw"
+            class="color_thumbnail slick-initialized slick-slider"
+          >
+            <div
+              style="margin: auto !important"
+              class="slick-list draggable d-flex flex-nowrap"
+            >
+              <div
+                class="slick-track"
+                style="
+                  opacity: 1;
+                  /* width: 1008px; */
+                  transform: translate3d(0px, 0px, 0px);
+                "
+              >
+                <div
+                  class="slick-slide slick-current slick-active slide-color-review"
+                  data-slick-index="0"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_OberonBlack','OberonBlack')"
+                        src="https://cars.tatamotors.com/images/harrier/color/harrier-grassland-thumbnail.jpg"
+                        data-src="/images/harrier/color/harrier-grassland-thumbnail.jpg"
+                        alt="Oberon Black Thumbnail"
+                        title="Oberon Black Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="1"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_OberonBlack','OberonBlack')"
+                        src="https://cars.tatamotors.com/images/harrier/color/oberon-black-thumb.jpg"
+                        data-src="/images/harrier/color/oberon-black-thumb.jpg"
+                        alt="Oberon Black Thumbnail"
+                        title="Oberon Black Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="2"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_RoyaleBlue','RoyaleBlue')"
+                        src="https://cars.tatamotors.com/images/harrier/color/royale-blue-harrier-thumb.jpg"
+                        data-src="/images/harrier/color/royale-blue-harrier-thumb.jpg"
+                        alt="Royale Blue Thumbnail"
+                        title="Royale Blue Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="3"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_TropicalMist','TropicalMist')"
+                        src="https://cars.tatamotors.com/images/harrier/color/harrier-tropical-mist-thumb.jpg"
+                        data-src="/images/harrier/color/harrier-tropical-mist-thumb.jpg"
+                        alt="Tropical Mist Thumbnail"
+                        title="Tropical Mist Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="4"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_CalypsoRed','CalypsoRed')"
+                        src="https://cars.tatamotors.com/images/harrier/color/Calypso-Red-Thumbnail.jpg"
+                        data-src="/images/harrier/color/Calypso-Red-Thumbnail.jpg"
+                        alt="Calypso-Red-Thumbnail"
+                        title="Calypso-Red-Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="5"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_OrcusWhite','OrcusWhite')"
+                        src="https://cars.tatamotors.com/images/harrier/color/Orcus-White-Thumbnail.jpg"
+                        data-src="/images/harrier/color/Orcus-White-Thumbnail.jpg"
+                        alt="Orcus-White-Thumbnail"
+                        title="Orcus-White-Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="slick-slide slick-active slide-color-review"
+                  data-slick-index="6"
+                  aria-hidden="false"
+                  style="width: 144px"
+                >
+                  <div>
+                    <div style="width: 100%; display: inline-block">
+                      <img
+                        class="lazyload"
+                        onclick="ColoursDataLayer('SUVS','HARRIER','Colours_DaytonaGrey','DaytonaGrey')"
+                        src="https://cars.tatamotors.com/images/harrier/color/Daytona-Grey-Thumbnail.jpg"
+                        data-src="/images/harrier/color/Daytona-Grey-Thumbnail.jpg"
+                        alt="Daytona-Grey-Thumbnail"
+                        title="Daytona-Grey-Thumbnail"
+                        width="420"
+                        height="295"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="color_table" style="display: none">
+            <div class="hiddenMobile">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      Roof Color option* <br /><small
+                        >( available on XZ + XZA+ )</small
+                      >
+                    </th>
+                    <th>Moroccan <br />Blue</th>
+                    <th>Vermont <br />Red</th>
+                    <th>Glasgow <br />Grey</th>
+                    <th>Seattle <br />Silver</th>
+                    <th>Calgary <br />White</th>
+                    <th>Etna <br />Orange</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Sonic Silver</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row01.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row02.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row03.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row04.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Ivory White</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row05.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row06.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row07.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row08.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="hiddenDesktop">
+              <table>
+                <thead>
+                  <tr>
+                    <th>
+                      Roof Color option* <br /><small
+                        >( available on XZ + XZA+ )</small
+                      >
+                    </th>
+                    <th>Sonic Silver</th>
+                    <th>Ivory White</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Moroccan Blue</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row01.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row05.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Vermont Red</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row02.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row06.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Glasgow Grey</td>
+                    <td>-</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row07.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>Seattle Silver</td>
+                    <td>-</td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Calgary White</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row03.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>-</td>
+                  </tr>
+                  <tr>
+                    <td>Etna Orange</td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row04.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                    <td>
+                      <img
+                        src="/images/altroz/color/table/row08.png"
+                        alt=""
+                        title=""
+                        width="68"
+                        height="68"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+    <div>
+      <section class="variants_price_section">
+        <div class="dark_card">
+          <!--<div class="title">-->
+          <!--	<div class="max_width clear">-->
+          <!--		<h4>Harrier On Social</h4>-->
+          <!--	</div>-->
+          <!--</div>-->
+          <div class="reviews_section">
+            <div class="tab_section">
+              <div class="max_width">
+                <div class="tab_links">
+                  <div
+                    class="review_btn tabswidth60 slick-initialized slick-slider"
+                  >
+                    <div class="slick-list draggable">
+                      <div
+                        class="slick-track"
+                        style="
+                          opacity: 1;
+                          width: 5000px;
+                          transform: translate3d(0px, 0px, 0px);
+                        "
+                      >
+                        <div
+                          class="slick-slide slick-current slick-active"
+                          data-slick-index="0"
+                          aria-hidden="false"
+                        >
+                          <div>
+                            <div style="width: 100%; display: inline-block">
+                              <div class="tab_anchor">
+                                <h5
+                                  onclick="CommonDataLayer('SUVS','HARRIER','Footer-Social_Reviews')"
+                                >
+                                  Reviews
+                                </h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="review_tabs slick-initialized slick-slider">
+                <div class="slick-list draggable" style="height: 255.938px">
+                  <div
+                    class="slick-track"
+                    style="
+                      opacity: 1;
+                      width: 1007px;
+                      transform: translate3d(0px, 0px, 0px);
+                    "
+                  >
+                    <div
+                      class="slick-slide slick-current slick-active"
+                      data-slick-index="0"
+                      aria-hidden="false"
+                      style="width: 1007px"
+                    >
+                      <div>
+                        <div
+                          style="
+                            width: 100vw;
+                            text-align: center;
+                            margin: auto !important;
+                            display: inline-block;
+                          "
+                        >
+                          <div
+                            style="width: 100%; height: auto"
+                            class="review_slider slick-initialized slick-slider m-0"
+                          >
+                            <button
+                              class="slick-prev slick-arrow"
+                              aria-label="Previous"
+                              type="button"
+                            >
+                              Previous
+                            </button>
+                            <div
+                              style="
+                                width: calc(100vw - 120px);
+                                margin: auto !important;
+                              "
+                              class="slick-list draggable"
+                            >
+                              <div
+                                class="slick-track"
+                                style="
+                                  opacity: 1;
+                                  width: 3848px;
+                                  transform: translate3d(0px, 0px, 0px);
+                                  /* transform: translate3d(-1776px, 0px, 0px); */
+                                "
+                              >
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="-3"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            tabindex="-1"
+                                          >
+                                            AutoX</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="https://cars.tatamotors.com/images/harrier/reviews/thumbreviews03.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The 2020 Harrier is a good example of
+                                          how small things make a huge
+                                          difference. Repositioning the USB
+                                          port, the smaller...
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="-2"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="https://cars.tatamotors.com/images/harrier/reviews/thumbreviews04.jpg"
+                                            tabindex="-1"
+                                          >
+                                            Car and Bike</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="https://cars.tatamotors.com/images/harrier/reviews/thumbreviews04.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          With some styling updates, quite a few
+                                          updates in the features department and
+                                          a BS6 engine that's now available with
+                                          an...
+                                          <a
+                                            href="/suv/harrier/reviews#car-and-bike"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="-1"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            tabindex="-1"
+                                          >
+                                            Times Drive</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="https://cars.tatamotors.com/images/harrier/reviews/thumbreviews05.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The Harrier BSVI looks beautiful with
+                                          amazing design. The overall refinement
+                                          is noticeable. Harrier finally comes
+                                          with...
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide"
+                                  data-slick-index="0"
+                                  aria-hidden="true"
+                                  style="width: 296px"
+                                  tabindex="-1"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="https://cars.tatamotors.com/suv/harrier/reviews#autocar-india"
+                                            tabindex="-1"
+                                          >
+                                            Autocar India</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews01.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          Tata Motors has upgraded the 2020
+                                          Harrier with a raft of improvements
+                                          and is confident it can now achieve
+                                          its true....
+                                          <a
+                                            href="/suv/harrier/reviews#autocar-india"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide"
+                                  data-slick-index="1"
+                                  aria-hidden="true"
+                                  style="width: 296px"
+                                  tabindex="-1"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#overdrive"
+                                            tabindex="-1"
+                                          >
+                                            Overdrive</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews02.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The Tata Harrier with its unique
+                                          design and shades of Land Rover
+                                          styling has already hit a sweet spot
+                                          in the market. It...
+                                          <a
+                                            href="/suv/harrier/reviews#overdrive"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide"
+                                  data-slick-index="2"
+                                  aria-hidden="true"
+                                  style="width: 296px"
+                                  tabindex="-1"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            tabindex="-1"
+                                          >
+                                            AutoX</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews03.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The 2020 Harrier is a good example of
+                                          how small things make a huge
+                                          difference. Repositioning the USB
+                                          port, the smaller...
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-current slick-active"
+                                  data-slick-index="3"
+                                  aria-hidden="false"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#car-and-bike"
+                                            tabindex="0"
+                                          >
+                                            Car and Bike</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews04.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          With some styling updates, quite a few
+                                          updates in the features department and
+                                          a BS6 engine that's now available with
+                                          an...
+                                          <a
+                                            href="/suv/harrier/reviews#car-and-bike"
+                                            target="_blank"
+                                            tabindex="0"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-active"
+                                  data-slick-index="4"
+                                  aria-hidden="false"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            tabindex="0"
+                                          >
+                                            Times Drive</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews05.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The Harrier BSVI looks beautiful with
+                                          amazing design. The overall refinement
+                                          is noticeable. Harrier finally comes
+                                          with...
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            target="_blank"
+                                            tabindex="0"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self slick-active"
+                                  data-slick-index="5"
+                                  aria-hidden="false"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#autocar-india"
+                                            tabindex="0"
+                                          >
+                                            Autocar India</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews01.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          Tata Motors has upgraded the 2020
+                                          Harrier with a raft of improvements
+                                          and is confident it can now achieve
+                                          its true....
+                                          <a
+                                            href="/suv/harrier/reviews#autocar-india"
+                                            target="_blank"
+                                            tabindex="0"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="6"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#overdrive"
+                                            tabindex="-1"
+                                          >
+                                            Overdrive</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews02.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The Tata Harrier with its unique
+                                          design and shades of Land Rover
+                                          styling has already hit a sweet spot
+                                          in the market. It...
+                                          <a
+                                            href="/suv/harrier/reviews#overdrive"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="7"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            tabindex="-1"
+                                          >
+                                            AutoX</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews03.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The 2020 Harrier is a good example of
+                                          how small things make a huge
+                                          difference. Repositioning the USB
+                                          port, the smaller...
+                                          <a
+                                            href="/suv/harrier/reviews#autox"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="8"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#car-and-bike"
+                                            tabindex="-1"
+                                          >
+                                            Car and Bike</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews04.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          With some styling updates, quite a few
+                                          updates in the features department and
+                                          a BS6 engine that's now available with
+                                          an...
+                                          <a
+                                            href="/suv/harrier/reviews#car-and-bike"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div
+                                  class="slick-slide slick-cloned slick-slide-self"
+                                  data-slick-index="9"
+                                  aria-hidden="true"
+                                  tabindex="-1"
+                                  style="width: 296px"
+                                >
+                                  <div>
+                                    <div
+                                      style="width: 100%; display: inline-block"
+                                    >
+                                      <div class="review_content">
+                                        <h6>
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            tabindex="-1"
+                                          >
+                                            Times Drive</a
+                                          >
+                                        </h6>
+                                        <p>
+                                          <img
+                                            src="/images/harrier/reviews/thumbreviews05.jpg"
+                                            class="t-img"
+                                            alt=""
+                                            title=""
+                                            width="160"
+                                            height="100"
+                                          />
+                                          The Harrier BSVI looks beautiful with
+                                          amazing design. The overall refinement
+                                          is noticeable. Harrier finally comes
+                                          with...
+                                          <a
+                                            href="/suv/harrier/reviews#times-drive"
+                                            target="_blank"
+                                            tabindex="-1"
+                                            >..Read More</a
+                                          >
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <button
+                              class="slick-next slick-arrow"
+                              aria-label="Next"
+                              type="button"
+                            >
+                              Next
+                            </button>
+                          </div>
+
+                          <div class="max_width">
+                            <div class="clear text-right">
+                              <a
+                                class="reviews-btn"
+                                href="/suv/harrier/reviews"
+                                tabindex="0"
+                                >Read all reviews</a
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <div class="floating_btns">
+      <div class="right_nexon_details">
+        <a
+          class="offer_btn openLogin"
+          onclick="DataLayerContactRequestCallBack('SUVS','HARRIER')"
+          >Request a Call back</a
+        >
+        <a
+          class="test_drive_btn"
+          href="https://harrier.tatamotors.com/bookonline/#/new-customer/0"
+          onclick="DataLayerBookOnline('SUVS','HARRIER')"
+          >Book Online</a
+        >
+        <a
+          class="chat_btn"
+          href="/suv/harrier/downloads"
+          onclick="DataLayerDownloadBrochure('SUVS','HARRIER')"
+          >Download Brochure</a
+        >
+      </div>
+    </div>
+    <div class="price_note">
+      <small style="font-size: smaller"
+        >Images shown on the website are for representation purpose only.
+        Colours may vary and some feature elements are from Accessories.</small
+      >
+    </div>
+    <footer>
+      <div class="max_width footer-note">
+        <div class="clear">
+          <br />
+          <br />
+          <p>
+            <small style="font-size: smaller"
+              >The ex-showroom price of Tata Harrier ranges from ₹ 14.64 Lakh to
+              ₹ 21.94 Lakh. Tata Harrier is available in 2 options - manual and
+              automatic. Select your preferred city (Delhi, Mumbai, Pune,
+              Chennai, Kolkata, Bangalore) from the above menu to know the Tata
+              Harrier Price.<span id="dots">...</span
+              ><span id="more" style="display: none">
+                <br />
+                The price of Tata Harrier manual base variant XE starts at ₹
+                1464900* while the automatic base variant XMA starts at ₹
+                1734900*.</span
+              ></small
+            >
+          </p>
+          <button onclick="footerreadmore()" id="myBtn">Read more</button>
+        </div>
+        <br />
+      </div>
+
+      <script>
+        function footerreadmore() {
+          var dots = document.getElementById("dots");
+          var moreText = document.getElementById("more");
+          var btnText = document.getElementById("myBtn");
+
+          if (dots.style.display === "none") {
+            dots.style.display = "inline";
+            btnText.innerHTML = "Read more";
+            moreText.style.display = "none";
+          } else {
+            dots.style.display = "none";
+            btnText.innerHTML = "Read less";
+            moreText.style.display = "inline";
+          }
+        }
+      </script>
+      <div class="top_footer">
+        <div class="max_width">
+          <div class="flex">
+            <div class="call_assistance">
+              <a
+                href="tel:1800 209 8282"
+                onclick="CommonDataLayer('SUVS','HARRIER','Assistance_PhoneNumber')"
+              >
+                Toll Free Number : 1800 209 8282</a
+              ><br />
+              <a href="tel:9512127979"> Missed Call Number: 9512127979</a><br />
+              <a
+                href="https://api.whatsapp.com/send/?phone=918980408282&amp;text&amp;app_absent=Hi"
+                >WhatsApp Number: 89804 08282</a
+              >
+            </div>
+            <div style="color: #fff !important" class="tnc">
+              <a href="/terms-of-use"> Terms &amp; Conditions </a> |
+              <a href="/privacy-policy">Privacy Policy</a>
+            </div>
+            <div class="social">
+              <a
+                href="https://www.facebook.com/officialtatamotorscars/"
+                target="_blank"
+                rel="nofollow"
+                onclick="CommonDataLayer('SUVS','HARRIER','SocialShare_Facebook')"
+              >
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAAAAAAeW/F+AAABK0lEQVQokb3SIYiEQBQGYIsgx4YrkyzCwsEGi4jNZNi4ZTm2mDduMmzdsH3hkvHapQXBIAh7IJYLJtMlYZAJgwzzGAYxnVeuOBrv1Y83b94/o2n/VoYV7MMwPDi6Up3zA8Mg6fVJoSv7UmPKgLObis1TARJo2zQXQ8H2HYMgVf4R71Wz3aKDvjr6rm2qbuaVDPpsrV5K17xPykViabriaAM9b8uOQ+YjhFYTXh+jt2/Gobqdo8if9O9qOq4MwCgl5DpZ7EAGKQSAlHLo40ksu7ol3W93izGehurGSYEZyCZPk/fXyWzkB6eKgijDYOtbqs2dB+WQKBP74/Rljt2RRbpZYIAlHkNNFlks8PjeC7O9Lw4yn+eiYwvdTkZod98o//hYOjJNE82pqn4A472g3EFsbQkAAAAASUVORK5CYII="
+                  alt=""
+                  title=""
+                  width="30"
+                  height="30"
+                  target="_blank"
+                />
+              </a>
+              <a
+                href="https://twitter.com/TataMotors_Cars/"
+                target="_blank"
+                rel="nofollow"
+                onclick="CommonDataLayer('SUVS','HARRIER','SocialShare_Twitter')"
+              >
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAAAAAAeW/F+AAABrElEQVQokc2SIajCQBjHFw4GSwuGC0sG08BmsJnEIBgsBoNgMJjkwSuCYSAMYcVkeEFYeSaLQYO8YhAEQRgIY8gD4RAOjuO45bfdblMfppfeHxbuft/3/b/79inKv5KWg1AHigLAS1oejEctQ1EgFGdgFEu5jMLOx+50XA1b9U5VXKg1a1rTJM019phQSi6H9WaYVOttz3PJQWOFWMg4I/gaOBLvsO+2TT0+vF8JEwqJZyXF65+IoYNTNXRNd8KEMn5bNKVf90Tozf9y7X5nKSmjQR/KpzS2V8pCis67jUeoxF7SuAKKb5sgdqQkkqQMHyoJViszH9OoW8Z55MyZiEDbcppt+SI5jhBfLH9mylGoZVdwRillIjeK3HdhOki95gY4NaUigC9NNRu0bvkZFiLftpZRAKeIJFmJOceLxsPv1Ouzw+VG0oExfLw7i3xztPEJlwbkOCn8WoKCdcKcCk7Ok/y9L8WotAdDe32Ji/MwvG5HpcfCpcHSQ/GbozXAKFj2jCfffMv1os4jiC77ea8En3dQM5vv9sRxnMl42K08tSwLADUReL29f9QP6/5AhZlh6+gAAAAASUVORK5CYII="
+                  alt=""
+                  title=""
+                  width="30"
+                  height="30"
+                  target="_blank"
+                />
+              </a>
+              <a
+                href="https://www.instagram.com/tataharrier/"
+                target="_blank"
+                rel="nofollow"
+                onclick="CommonDataLayer('SUVS','HARRIER','SocialShare_Instagram')"
+              >
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAAAAAAeW/F+AAAB/klEQVQokbWSLajqUBzAh3DCgrBkMBmEFWFBLAsLFqtBUCyC3CA3iGHFIAiCgsFieMkiGOQG4RYfCEsDwxjiYGUMxjjI4HAYY0fM9+zDr/fgtfdjGzv8zv9j/zOG+d/kqo1m44VWu91qVHOJzHBNxblA6FIgxYU+IdhV6olnm18OeiMISYidbTPW2ZHpX6+EEPqIrhD+Xm92BjYniZ5awTWB0F0hPtayXHGB4TzRExpNY2lcpMllL9CGhtiZP5JHmSPCICBIqdCGxtieJXoc1Y7q+sixbA8bnUJRWiF7+qZvV33RbXSXOtb2e8VG5viuMUY4wOeJABi2PDP8G/EDfNcTC1u649tDHtAlKA0t4pk2ttIPm9no1+CIz1UQr4F0Qkf5WXvuoI/KAeul9Ah4De2FPnLSzucu+hBVXxdSXdJ8pUL1M7on7DyzxcVrrmletqXBU7uolx8acF3PsRmQr6+h1s8PXpN/AmF3877afI7v7FCw5YH8qvtM9lMLXGWz2qgwVHssO3qtPWAy/EB1PBz4nqP2ixk687doBuSl0ffZMr6HUh7QE3skX7hIjidSqHV63Vohbn+M3fkj+aomSWI5okJvUZRa23s0K2sYmsb5fKLoun46GYZhQqzJyYzF6dGO/9OE5NU+jkUm9cuD+ieHZRmkQwZc7m+4u/0HPwqHfe3nhFPhAAAAAElFTkSuQmCC"
+                  alt=""
+                  title=""
+                  width="30"
+                  height="30"
+                  target="_blank"
+                />
+              </a>
+              <a
+                href="https://www.youtube.com/user/TataMotorsGroup"
+                target="_blank"
+                rel="nofollow"
+                onclick="CommonDataLayer('SUVS','HARRIER','SocialShare_Youtube')"
+              >
+                <img
+                  src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAAAAAAeW/F+AAABj0lEQVQokdWSsWvCQBTGM2fLKjgGOjlIhpDRza3g5CIBcZCObv4Fbu3iIBQRXBxcnDJIB4cgCIEsAYcgHEIIcng8coSCQ3vvnbZ269KhX0jI3Y/v3XfvzjD+syrOY7vj9/r9J61+r+u3W42KSdRqjd+iZJ+yY6bFDuk+Dpe+jdRsLg75iZ8FFACFEoAQZ35i8RBx9TmRSoWkL0gJBb3FZYq4FjFZkIvzM6hfxGooP+aInWOOQynzcLkW7+gscAza7QInKtm8210lmSqv619eEXuloIVLNvHM+iBgKiSQ+4ZVMfWwmWeYdtOfxCdMeueWKlJ5XDSoDZ11Rnv4woCBr9jyRttcqpm74hitZOO6YbdHq5iJ4juai8XV2ipa0x0GjJLj9q9YcIlTMltPFymnnNgIobHDciwFkqf7A9p045R7Rk3dMuo4uSgFdljemlp9SRDdAEjNATQ2G/M043iggEdKEoLnaTig62C2xsEm3O6iKEZFcRTtwk0w69j6Mll2zXHcH3Kc+oNl/sXN/b0+Aeb3lSOXEjCAAAAAAElFTkSuQmCC"
+                  alt=""
+                  title=""
+                  width="30"
+                  height="30"
+                  target="_blank"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../../Bootstrap/assets/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
