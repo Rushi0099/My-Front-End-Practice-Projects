@@ -1,0 +1,2967 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0"
+    />
+    <!-- <meta name="MobileOptimized" content="320" /> -->
+
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="../../Bootstrap/assets/css/bootstrap.min.css"
+    />
+    <title>OLX NEW Site Replication</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      :root {
+        --site_primary_color: rgb(0, 47, 52);
+        --boxwidth: 75px;
+        --boxheight: 75px;
+        --boxcolor: rgba(20, 0, 255, 1);
+      }
+
+      body {
+        width: 100vw;
+        text-size-adjust: 100%;
+        color: var(--site_primary_color);
+        transform-style: preserve-3d;
+        overflow-x: hidden;
+      }
+
+      #app,
+      #container {
+        padding: 0;
+        margin: 0;
+        width: 100vw;
+        /* min-width: 1024px; */
+        min-height: 100vh;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+      }
+      .site-header,
+      .site-nav,
+      .site-main,
+      .site-footer {
+        display: block;
+        width: 100%;
+        margin: 0 5px;
+      }
+      .site-logo-img {
+        width: 48px;
+        height: 48px;
+      }
+      .search-boxes {
+        height: 48px;
+        margin: 0 8px;
+        box-sizing: border-box;
+      }
+      .site-logo-search-lang-log-btn {
+        padding: 10px 16px;
+      }
+      .site-header {
+        width: 100%;
+        /* height: 68px;
+        top: 0;
+        position: fixed; */
+      }
+      .site-location-search {
+        height: 48px;
+        border-radius: 4px;
+      }
+
+      .site-location-search input {
+        height: 40px;
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        outline: none;
+        padding-left: 16px;
+      }
+
+      .p-loctions div {
+        margin: 2px;
+      }
+      .p-loctions div:hover {
+        background-color: rgb(181, 240, 237);
+        margin: 2px;
+      }
+      .current-location span :hover {
+        background-color: rgb(181, 240, 237);
+      }
+
+      .locality-Items {
+        height: 320px;
+        overflow-y: auto;
+        box-shadow: 0 4px 8px rgb(177, 177, 177);
+      }
+
+      .site-item-search {
+        height: 48px;
+        border-radius: 4px;
+      }
+      .site-item-search input {
+        background-color: transparent;
+        height: 40px;
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        outline: none;
+        padding-left: 16px;
+      }
+
+      .pre-border-style {
+        border: 2px solid var(--site_primary_color);
+      }
+      .post-border-style {
+        border: 2px solid cyan;
+      }
+
+      .dropdownItem-lang {
+        appearance: none !important;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        outline: none;
+        border: none;
+        color: var(--site_primary_color);
+      }
+      .btn-search {
+        min-width: 48px;
+        height: 48px;
+        background-color: var(--site_primary_color);
+      }
+      .lang-box {
+        color: var(--site_primary_color);
+      }
+      .login-btn {
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-thickness: 2px;
+      }
+
+      a {
+        color: var(--site_primary_color);
+        text-decoration: none;
+      }
+
+      .nav-bar {
+        flex: 0 0 auto;
+      }
+
+      .nav-bar-item {
+        font-weight: 500;
+        font-size: 0.9em;
+        margin: 0 8px;
+        text-overflow: ellipsis;
+      }
+
+      .nav-bar-item {
+        min-width: 32px;
+        max-width: calc(100% - 184px);
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+      }
+
+      .modal-backdrop {
+        display: none;
+      }
+
+      @media screen and (max-width: 300px) {
+        .site-lang {
+          display: none !important;
+        }
+        .site-location-search {
+          flex-grow: 1;
+          max-width: 45vw;
+        }
+        .site-login {
+          flex-grow: 1;
+        }
+      }
+
+      @media screen and (min-width: 300.1px) and (max-width: 335px) {
+        .lang-box {
+          flex-flow: column;
+        }
+        .lang-order {
+          margin-top: 0 !important;
+          order: 2;
+        }
+        .myLanguage {
+          text-align: center !important;
+          margin-top: 0 !important;
+        }
+        .lang-box,
+        .site-login {
+          flex-grow: 1;
+        }
+      }
+      @media screen and (max-width: 575.98px) {
+        .site-item-search {
+          display: none;
+        }
+      }
+      @media screen and (max-width: 575.98px) {
+        .site-location-search,
+        .search-boxes {
+          width: 25vw;
+        }
+        .lang-box,
+        .site-login {
+          flex-grow: 1;
+        }
+      }
+      @media screen and (min-width: 576px) {
+        .site-item-search {
+          margin: 0 0 0 6px;
+          padding: 0;
+          min-width: 48px;
+        }
+      }
+
+      #main-ad-flex-id {
+        width: 100%;
+        height: 100%;
+        background: url("https://statics.olx.in/olxin/banners/hero_bg_in_v1@1x.png")
+          50% 0;
+      }
+      .sell-ad-flex-btn:hover {
+        color: white !important;
+        background-color: #3a77ff !important;
+      }
+
+      /* nav-flex-items--- Start */
+
+      .nav-categories {
+        background-color: white;
+        column-count: 4 !important;
+        justify-content: space-between !important;
+      }
+
+      .nav-categories .nav-item-link {
+        color: var(--site_primary_color);
+        font-size: 14px;
+        line-height: 1.15;
+      }
+
+      .nav-categories .nav-item-link:hover {
+        color: #00a49f;
+      }
+      .nav-category-item-wrapper {
+        display: inline-block !important;
+        margin-bottom: 6px;
+        padding: 0 8px;
+      }
+      .nav-flex-item-title {
+        display: inline-block !important;
+        width: 100% !important;
+        margin: 12px 0 !important;
+        font-weight: 700 !important;
+        line-height: unset;
+        box-sizing: border-box;
+      }
+      .nav-flex-item {
+        margin: 8px 0;
+      }
+
+      /* nav-flex-items--- End */
+
+      /* advertise-flex animation -----START */
+      /* .cube-base {
+        display: inline-block;
+        position: relative;
+        width: var(--boxwidth);
+        height: var(--boxheight);
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        transform: rotateX(-20deg) rotateY(45deg);
+      }
+
+      .cube-platform {
+        display: inline-block;
+        position: absolute;
+        top: 100%;
+        left: 100%;
+        width: var(--boxwidth);
+        height: var(--boxheight);
+        transform-style: preserve-3d;
+        transform-origin: center center;
+        animation: rotatebox 6s linear infinite;
+      }
+
+      @keyframes rotatebox {
+        0% {
+          transform: rotateY(0deg);
+        }
+        10% {
+          transform: rotateY(36deg);
+        }
+        20% {
+          transform: rotateY(72deg);
+        }
+        30% {
+          transform: rotateY(108deg);
+        }
+        40% {
+          transform: rotateY(144deg);
+        }
+        50% {
+          transform: rotateY(180deg);
+        }
+        60% {
+          transform: rotateY(216deg);
+        }
+        70% {
+          transform: rotateY(252deg);
+        }
+        80% {
+          transform: rotateY(288deg);
+        }
+        90% {
+          transform: rotateY(324deg);
+        }
+        100% {
+          transform: rotateY(360deg);
+        }
+      }
+
+      .cube_face {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        font-size: x-large;
+        color: white;
+
+        text-align: center;
+        line-height: 1200%;
+        display: inline-block;
+        border: 3px solid black;
+      }
+      .front {
+        background: linear-gradient(black, var(--boxcolor));
+        transform: rotateY(0deg) translateZ(calc(var(--boxheight) / 2));
+      }
+      .back {
+        background: linear-gradient(black, var(--boxcolor));
+        transform: rotateY(-180deg) translateZ(calc(var(--boxheight) / 2));
+      }
+      .left {
+        background: linear-gradient(black, var(--boxcolor));
+        transform: rotateY(-90deg) translateZ(calc(var(--boxwidth) / 2));
+      }
+      .right {
+        background: linear-gradient(black, var(--boxcolor));
+        transform: rotateY(90deg) translateZ(calc(var(--boxwidth) / 2));
+      }
+      .top {
+        background-color: rgba(6, 6, 6, 1);
+        transform: rotateX(90deg) translateZ(calc(var(--boxheight) / 2));
+      }
+      .bottom {
+        background: linear-gradient(black, var(--boxcolor));
+        transform: rotateX(-90deg) translateZ(calc(var(--boxheight) / 2));
+      }
+      .shadow {
+        background-color: var(--boxcolor);
+        filter: blur(20px);
+        box-shadow: 0px 0px 120px rgba(0, 0, 255, 0.2),
+          0px 0px 200px rgba(0, 0, 255, 0.4), 0px 0px 300px rgba(0, 0, 255, 0.6),
+          0px 0px 400px rgba(0, 0, 255, 0.8), 0px 0px 500px rgba(0, 0, 255, 1);
+
+        transform: rotateX(-90deg) translateZ(calc(var(--boxheight) - 80px));
+      } */
+
+      .g-ad-flex span {
+        width: 100vw;
+        margin-left: 0px !important;
+        animation: slide 12s linear infinite;
+      }
+
+      @keyframes slide {
+        0% {
+          transform: translate(0vw);
+        }
+        /* 0% {
+          transform: translate((calc(50vw - 130.828px)));
+        } */
+
+        50% {
+          transform: translate(calc(100vw - 130px));
+        }
+        100% {
+          transform: translate(0vw);
+        }
+      }
+
+      /* advertise-flex animation -----END */
+
+      /* Product Gallery ---- START */
+      #productGallery {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .item > a {
+        color: var(--site_primary_color);
+      }
+      .item {
+        border: 1px solid #0e040533;
+        border-radius: 4px;
+        width: calc(25% - 16px);
+        position: relative;
+        box-sizing: border-box;
+        margin: 8px;
+      }
+      .item .item-address {
+        font-size: 0.65em;
+        display: flex;
+        justify-content: space-between;
+      }
+      .item figure {
+        height: 160px;
+        margin-top: 5px;
+      }
+      .item-img-loading {
+        height: 165px !important;
+        margin-top: 0px !important;
+        background-color: rgba(189, 189, 189, 0.6);
+        animation: loadingImg 1s forwards infinite;
+      }
+
+      @keyframes loadingImg {
+        0% {
+          opacity: 0.3;
+        }
+        50% {
+          opacity: 0.6;
+        }
+        100% {
+          opacity: 0.3;
+        }
+      }
+
+      .item-img {
+        height: 100%;
+        max-height: 100%;
+        max-width: 100%;
+      }
+      .item-detail-wrapper {
+        border-left: 5px solid #ffce32;
+        padding: 0 10px 10px;
+      }
+      .item h3,
+      .item h5 {
+        margin: 0;
+      }
+      .item p {
+        margin: 10px 0;
+      }
+      .featured {
+        background-color: #ffce32;
+        padding: 2px 5px;
+        text-transform: uppercase;
+        position: absolute;
+        top: 8px;
+        left: 8px;
+        font-size: 0.6em;
+        font-weight: bold;
+      }
+      .lastSearchItems .hearts {
+        color: magenta;
+        position: absolute;
+        top: -8px;
+        right: 5px;
+      }
+
+      .freshRecommendations .hearts {
+        color: var(--site_primary_color);
+        opacity: 0.7;
+        position: absolute;
+        top: -8px;
+        right: 5px;
+      }
+
+      .item-loadMore {
+        border: 2px solid var(--site_primary_color);
+        border-radius: 5px;
+        padding: 0px 10px;
+        display: inline-block;
+        height: 48px;
+        color: var(--site_primary_color);
+        text-decoration: none;
+        padding-top: 12px;
+      }
+
+      .item-loadMore:hover {
+        border: 5px solid var(--site_primary_color);
+        border-radius: 5px;
+        padding-top: 8.5px;
+      }
+
+      @media screen and (max-width: 575.98px) {
+        .item {
+          width: calc(100% - 16px);
+          max-width: 250px;
+          margin: 10px auto;
+        }
+      }
+      @media screen and (min-width: 576px) and (max-width: 767.98px) {
+        .item {
+          width: calc(50% - 16px);
+          max-width: 250px;
+          margin: 10px auto;
+        }
+      }
+      /* Product Gallery ---- END */
+
+      /* footer-flex START */
+      .downLoadApp {
+        width: 128px;
+        height: 40px;
+        margin-right: 8px;
+      }
+
+      @media screen and (max-width: 400px) {
+        .footer-flex {
+          display: block !important;
+        }
+
+        .footer-seprator {
+          display: none !important;
+        }
+
+        .footer-flex-img {
+          width: 80vw !important;
+        }
+
+        .footer-flex-img img {
+          width: 80vw !important;
+          margin-left: 15vw !important;
+        }
+
+        .footer-flex > div {
+          display: block !important;
+        }
+        .footer-links {
+          margin-top: 10px !important;
+        }
+
+        .footer-ad-apps {
+          display: block !important;
+          margin-left: 30vw !important;
+        }
+      }
+
+      @media screen and (min-width: 400.1px) and (max-width: 600px) {
+        .footer-flex-img {
+          width: 50% !important;
+        }
+        .footer-flex-img img {
+          margin-top: 2em;
+          width: 100% !important;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .getapp-logo {
+          display: grid !important;
+        }
+
+        .getapp-logo img {
+          margin-top: 8px;
+        }
+
+        .footer-ad-heading {
+          max-width: 500px !important;
+        }
+      }
+
+      @media screen and (max-width: 955px) {
+        .footer-ad-heading {
+          display: none;
+        }
+
+        .getapp-logo img {
+          margin-top: 8px;
+        }
+      }
+
+      @media screen and (min-width: 1185px) {
+        .getapp-logo {
+          display: flex !important;
+        }
+
+        .getapp-logo img {
+          margin-top: 8px;
+        }
+
+        .footer-ad-heading {
+          max-width: 500px !important;
+        }
+      }
+
+      /* grid */
+      .footer-grid {
+        color: #002f34;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        row-gap: 24px;
+        justify-items: start;
+        width: 100%;
+      }
+
+      .footer-grid ul {
+        list-style: none;
+        padding: 0;
+        text-transform: capitalize;
+        margin: 8px 0 0;
+        font-weight: normal;
+      }
+      .footer-grid ul li a {
+        color: rgba(0, 47, 52, 0.64);
+        text-transform: none;
+        font-size: 12px;
+      }
+      .footer-grid ul li a:hover {
+        color: #002f34;
+      }
+
+      .footer-grid {
+        line-height: 20px;
+        font-size: 14px;
+        font-family: Roboto, Arial, Helvetica, sans-serif;
+        text-align: left;
+        text-size-adjust: 100%;
+      }
+
+      .grid-item {
+        text-transform: uppercase;
+        font-weight: 700;
+        flex-basis: 20%;
+      }
+
+      .f-icons a svg {
+        width: 23.5px;
+        height: 23.5px;
+        margin-right: 8px;
+      }
+
+      .footer-downloads a {
+        line-height: 20px;
+        font-size: 12px;
+      }
+      .footer-downloads a img {
+        width: 86px;
+        height: 25px;
+      }
+
+      /* footer-flex END */
+
+      /* Bottom fotter ---- Start */
+
+      .footer-note {
+        width: 100vw;
+      }
+
+      .bottom-footer span {
+        font-weight: 700;
+      }
+
+      .botm-fotr-text {
+        line-height: 18px;
+        font-size: 12px;
+      }
+
+      .botm-fotr-text a {
+        color: white;
+      }
+
+      .footer-links {
+        width: 100vw;
+        padding: 16px 16px 32px 16px;
+      }
+
+      @media screen and (max-width: 575.98px) {
+        .footer-links {
+          padding: 4px;
+        }
+
+        .bottom-footer {
+          display: block !important;
+          text-align: center !important;
+        }
+
+        .bottom-footer section:last-child {
+          padding-top: 4px;
+        }
+      }
+
+      @media screen and (max-width: 535px) {
+        .footer-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      /* Bottom fotter ---- End */
+    </style>
+  </head>
+  <body>
+    <div id="app" class="app">
+      <div
+        id="container"
+        class="container-fluid container-main d-flex flex-column"
+      >
+        <div class="site-header w-100 px-2 py-1 m-0">
+          <div
+            style="background-color: #ebeeef; left: 0; right: 0; z-index: 3"
+            class="row d-flex m-0 site-logo-search-lang-log-btn flex-nowrap justify-content-evenly position-fixed top-0"
+          >
+            <div class="site-logo-img align-items-center col-1 p-0">
+              <figure>
+                <a class="w-100 h-100" href="https://www.olx.in/">
+                  <svg
+                    width="48px"
+                    height="48px"
+                    viewBox="0 0 1024 1024"
+                    data-aut-id="icon"
+                    class=""
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      style="fill: var(--site_primary_color)"
+                      class="rui-4K4Y7"
+                      d="M661.333 256v512h-128v-512h128zM277.333 298.667c117.824 0 213.333 95.531 213.333 213.333s-95.509 213.333-213.333 213.333c-117.824 0-213.333-95.531-213.333-213.333s95.509-213.333 213.333-213.333zM794.496 384l37.504 37.504 37.504-37.504h90.496v90.496l-37.504 37.504 37.504 37.504v90.496h-90.496l-37.504-37.504-37.504 37.504h-90.496v-90.496l37.504-37.504-37.504-37.504v-90.496h90.496zM277.333 426.667c-47.061 0-85.333 38.293-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.293 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                    ></path>
+                  </svg>
+                </a>
+              </figure>
+            </div>
+            <div class="search-boxes d-flex flex-grow-1 col-6 p-0">
+              <div style="min-width: 190px" class="col-8 col-sm-5">
+                <div
+                  class="site-location-search row d-inline-flex align-items-center w-100 m-0"
+                >
+                  <div
+                    style="background-color: white"
+                    class="visible-locality pre-border-style site-location-search d-inline-flex align-items-center"
+                    id="id-site-location-search"
+                  >
+                    <figure class="my-auto mx-auto">
+                      <label for="locality_search">
+                        <svg
+                          width="17px"
+                          height="25px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: var(--site_primary_color)"
+                            class="rui-4K4Y7"
+                            d="M448 725.333c-152.917 0-277.333-124.416-277.333-277.333s124.416-277.333 277.333-277.333c152.917 0 277.333 124.416 277.333 277.333s-124.416 277.333-277.333 277.333v0zM884.437 824.107v0.021l-151.915-151.936c48.768-61.781 78.144-139.541 78.144-224.192 0-199.979-162.688-362.667-362.667-362.667s-362.667 162.688-362.667 362.667c0 199.979 162.688 362.667 362.667 362.667 84.629 0 162.411-29.376 224.171-78.144l206.144 206.144h60.352v-60.331l-54.229-54.229z"
+                          ></path>
+                        </svg>
+                      </label>
+                    </figure>
+                    <input
+                      erstyle="background-color: #ebeeef"
+                      class="p-2"
+                      type="text"
+                      id="locality_search"
+                      placeholder="Search city,
+                    area or locality"
+                      value="India"
+                    />
+                    <figure class="my-auto mx-auto">
+                      <label for="locality_search">
+                        <svg
+                          style="transition: 1s"
+                          class="drop-down-arrow"
+                          width="24px"
+                          height="24px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: var(--site_primary_color)"
+                            class="rui-4K4Y7"
+                            d="M85.392 277.333h60.331l366.336 366.336 366.336-366.336h60.331v60.331l-408.981 409.003h-35.307l-409.045-409.003z"
+                          ></path>
+                        </svg>
+                      </label>
+                    </figure>
+                  </div>
+                  <div
+                    style="z-index: 2"
+                    id="locality-Items"
+                    class="locality-Items dropdownItem visually-hidden flex-column position-relative card m-0 p-0 border-0"
+                  >
+                    <div class="current-location mt-2 p-1">
+                      <span>
+                        <a class="row text-decoration-none p-0 m-0" href="#">
+                          <svg
+                            width="48px"
+                            height="48px"
+                            viewBox="0 0 1024 1024"
+                            data-aut-id="icon"
+                            class="col-3 align-self-center justify-content-center"
+                            fill-rule="evenodd"
+                          >
+                            <path
+                              style="fill: var(--bs-link-color)"
+                              class="rui-4K4Y7"
+                              d="M640 512c0 70.692-57.308 128-128 128s-128-57.308-128-128c0-70.692 57.308-128 128-128s128 57.308 128 128zM942.933 469.333h-89.6c-17.602-157.359-141.307-281.064-297.136-298.527l-1.531-0.139v-89.6h-85.333v89.6c-157.359 17.602-281.064 141.307-298.527 297.136l-0.139 1.531h-89.6v85.333h89.6c17.602 157.359 141.307 281.064 297.136 298.527l1.531 0.139v89.6h85.333v-89.6c157.359-17.602 281.064-141.307 298.527-297.136l0.139-1.531h89.6zM512 772.267c-143.741 0-260.267-116.525-260.267-260.267s116.525-260.267 260.267-260.267c143.741 0 260.267 116.525 260.267 260.267v0c0 143.741-116.525 260.267-260.267 260.267v0z"
+                            ></path>
+                          </svg>
+                          <div class="col-9">
+                            <span class="w-100 fw-bold"
+                              >Use current location</span
+                            >
+                            <span class="w-100 fw-normal"
+                              >location blocked. Check browser/phone
+                              settings.</span
+                            >
+                          </div>
+                        </a>
+                      </span>
+                    </div>
+                    <hr />
+                    <div class="popular-location">
+                      <div class="text-muted ms-2 mb-3">
+                        <span>POPULAR LOCATIONS</span>
+                      </div>
+                      <div
+                        class="p-loctions d-flex flex-column align-content-around"
+                      >
+                        <div class="location-1 d-flex align-items-center">
+                          <span class="geolocation-logo mt-2 p-2">
+                            <svg
+                              width="48px"
+                              height="48px"
+                              viewBox="0 0 1024 1024"
+                              data-aut-id="icon"
+                              class=""
+                              fill-rule="evenodd"
+                            >
+                              <path
+                                style="
+                                  fill: rgba(0, 47, 52, 0.64);
+                                  transform: scale(0.8);
+                                "
+                                class="rui-4K4Y7"
+                                d="M512 85.333c211.755 0 384 172.267 384 384 0 200.576-214.805 392.341-312.661 469.333v0h-142.656c-97.856-76.992-312.683-268.757-312.683-469.333 0-211.733 172.267-384 384-384zM512 170.667c-164.672 0-298.667 133.973-298.667 298.667 0 160.021 196.885 340.523 298.453 416.597 74.816-56.725 298.88-241.323 298.88-416.597 0-164.693-133.973-298.667-298.667-298.667zM512.006 298.66c94.101 0 170.667 76.565 170.667 170.667s-76.565 170.667-170.667 170.667c-94.101 0-170.667-76.565-170.667-170.667s76.565-170.667 170.667-170.667zM512.006 383.994c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span
+                            style="transform: scale(1)"
+                            class="fs-6 fw-semibold"
+                            >Kerala</span
+                          >
+                        </div>
+                        <div class="location-2 d-flex align-items-center">
+                          <span class="geolocation-logo mt-2 p-2">
+                            <svg
+                              width="48px"
+                              height="48px"
+                              viewBox="0 0 1024 1024"
+                              data-aut-id="icon"
+                              class=""
+                              fill-rule="evenodd"
+                            >
+                              <path
+                                style="
+                                  fill: rgba(0, 47, 52, 0.64);
+                                  transform: scale(0.8);
+                                "
+                                class="rui-4K4Y7"
+                                d="M512 85.333c211.755 0 384 172.267 384 384 0 200.576-214.805 392.341-312.661 469.333v0h-142.656c-97.856-76.992-312.683-268.757-312.683-469.333 0-211.733 172.267-384 384-384zM512 170.667c-164.672 0-298.667 133.973-298.667 298.667 0 160.021 196.885 340.523 298.453 416.597 74.816-56.725 298.88-241.323 298.88-416.597 0-164.693-133.973-298.667-298.667-298.667zM512.006 298.66c94.101 0 170.667 76.565 170.667 170.667s-76.565 170.667-170.667 170.667c-94.101 0-170.667-76.565-170.667-170.667s76.565-170.667 170.667-170.667zM512.006 383.994c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span
+                            style="transform: scale(1)"
+                            class="fs-6 fw-semibold"
+                            >Tamil Nadu</span
+                          >
+                        </div>
+                        <div class="location-3 d-flex align-items-center">
+                          <span class="geolocation-logo mt-2 p-2">
+                            <svg
+                              width="48px"
+                              height="48px"
+                              viewBox="0 0 1024 1024"
+                              data-aut-id="icon"
+                              class=""
+                              fill-rule="evenodd"
+                            >
+                              <path
+                                style="
+                                  fill: rgba(0, 47, 52, 0.64);
+                                  transform: scale(0.8);
+                                "
+                                class="rui-4K4Y7"
+                                d="M512 85.333c211.755 0 384 172.267 384 384 0 200.576-214.805 392.341-312.661 469.333v0h-142.656c-97.856-76.992-312.683-268.757-312.683-469.333 0-211.733 172.267-384 384-384zM512 170.667c-164.672 0-298.667 133.973-298.667 298.667 0 160.021 196.885 340.523 298.453 416.597 74.816-56.725 298.88-241.323 298.88-416.597 0-164.693-133.973-298.667-298.667-298.667zM512.006 298.66c94.101 0 170.667 76.565 170.667 170.667s-76.565 170.667-170.667 170.667c-94.101 0-170.667-76.565-170.667-170.667s76.565-170.667 170.667-170.667zM512.006 383.994c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span
+                            style="transform: scale(1)"
+                            class="fs-6 fw-semibold"
+                            >Punjab</span
+                          >
+                        </div>
+                        <div class="location-4 d-flex align-items-center">
+                          <span class="geolocation-logo mt-2 p-2">
+                            <svg
+                              width="48px"
+                              height="48px"
+                              viewBox="0 0 1024 1024"
+                              data-aut-id="icon"
+                              class=""
+                              fill-rule="evenodd"
+                            >
+                              <path
+                                style="
+                                  fill: rgba(0, 47, 52, 0.64);
+                                  transform: scale(0.8);
+                                "
+                                class="rui-4K4Y7"
+                                d="M512 85.333c211.755 0 384 172.267 384 384 0 200.576-214.805 392.341-312.661 469.333v0h-142.656c-97.856-76.992-312.683-268.757-312.683-469.333 0-211.733 172.267-384 384-384zM512 170.667c-164.672 0-298.667 133.973-298.667 298.667 0 160.021 196.885 340.523 298.453 416.597 74.816-56.725 298.88-241.323 298.88-416.597 0-164.693-133.973-298.667-298.667-298.667zM512.006 298.66c94.101 0 170.667 76.565 170.667 170.667s-76.565 170.667-170.667 170.667c-94.101 0-170.667-76.565-170.667-170.667s76.565-170.667 170.667-170.667zM512.006 383.994c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span
+                            style="transform: scale(1)"
+                            class="fs-6 fw-semibold"
+                            >Maharashtra</span
+                          >
+                        </div>
+                        <div class="location-5 d-flex align-items-center">
+                          <span class="geolocation-logo mt-2 p-2">
+                            <svg
+                              width="48px"
+                              height="48px"
+                              viewBox="0 0 1024 1024"
+                              data-aut-id="icon"
+                              class=""
+                              fill-rule="evenodd"
+                            >
+                              <path
+                                style="
+                                  fill: rgba(0, 47, 52, 0.64);
+                                  transform: scale(0.8);
+                                "
+                                class="rui-4K4Y7"
+                                d="M512 85.333c211.755 0 384 172.267 384 384 0 200.576-214.805 392.341-312.661 469.333v0h-142.656c-97.856-76.992-312.683-268.757-312.683-469.333 0-211.733 172.267-384 384-384zM512 170.667c-164.672 0-298.667 133.973-298.667 298.667 0 160.021 196.885 340.523 298.453 416.597 74.816-56.725 298.88-241.323 298.88-416.597 0-164.693-133.973-298.667-298.667-298.667zM512.006 298.66c94.101 0 170.667 76.565 170.667 170.667s-76.565 170.667-170.667 170.667c-94.101 0-170.667-76.565-170.667-170.667s76.565-170.667 170.667-170.667zM512.006 383.994c-47.061 0-85.333 38.272-85.333 85.333s38.272 85.333 85.333 85.333c47.061 0 85.333-38.272 85.333-85.333s-38.272-85.333-85.333-85.333z"
+                              ></path>
+                            </svg>
+                          </span>
+                          <span
+                            style="transform: scale(1)"
+                            class="fs-6 fw-semibold"
+                            >Goa</span
+                          >
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="site-item-search pre-border-style col-6 d-none d-sm-flex flex-grow-1 flex-shrink-1 align-items-center ms-3 justify-content-between"
+                id="id-site-item-search"
+              >
+                <input
+                  style="min-width: 0; background-color: white"
+                  class="p-2 flex-grow-1"
+                  type="text"
+                  id="Site_item_search"
+                  placeholder="Find Cars, Mobile Phones and more..."
+                />
+
+                <div
+                  style="right: 0"
+                  class="btn-search col-1 position-relative rounded-1"
+                >
+                  <figure class="my-auto mx-auto">
+                    <label
+                      class="position-absolute top-50 start-50 translate-middle"
+                      for="Site_item_search"
+                    >
+                      <svg
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 1024 1024"
+                        data-aut-id="icon"
+                        fill-rule="evenodd"
+                      >
+                        <path
+                          style="fill: white"
+                          class="rui-2lrc2"
+                          d="M448 725.333c-152.917 0-277.333-124.416-277.333-277.333s124.416-277.333 277.333-277.333c152.917 0 277.333 124.416 277.333 277.333s-124.416 277.333-277.333 277.333v0zM884.437 824.107v0.021l-151.915-151.936c48.768-61.781 78.144-139.541 78.144-224.192 0-199.979-162.688-362.667-362.667-362.667s-362.667 162.688-362.667 362.667c0 199.979 162.688 362.667 362.667 362.667 84.629 0 162.411-29.376 224.171-78.144l206.144 206.144h60.352v-60.331l-54.229-54.229z"
+                        ></path>
+                      </svg>
+                    </label>
+                  </figure>
+                </div>
+              </div>
+            </div>
+            <div
+              class="site-lang col-2 col-xl-1 d-flex justify-content-center p-0"
+            >
+              <div
+                id="lang-box"
+                class="lang-box d-flex justify-content-center position-absolute"
+              >
+                <span class="mt-3 lang-order">
+                  <label class="myLanguage position-absolute" for="myLanguage">
+                  </label>
+                  <select
+                    style="
+                      appearance: none;
+                      background-color: #ebeeef;
+                      z-index: 2;
+                    "
+                    class="dropdownItem dropdownItem-lang fw-bolder text-wrap text-uppercase text-center"
+                    name=""
+                    id="myLanguage"
+                    tabindex="0"
+                  >
+                    <option value="en">ENGLISH</option>
+                    <option value="hi">हिंदी</option>
+                    <option value="mr">मराठी</option>
+                    <option value="pa">ਪੰਜਾਬੀ</option>
+                    <option value="ta">தமிழ்</option>
+                  </select>
+                </span>
+                <label class="myLanguage mt-3 ms-1" for="myLanguage">
+                  <svg
+                    style="transition: 1s"
+                    class="drop-down-arrow myLanguage-arrow"
+                    width="24px"
+                    height="24px"
+                    viewBox="0 0 1024 1024"
+                    data-aut-id="icon"
+                    class=""
+                    fill-rule="evenodd"
+                  >
+                    <path
+                      style="fill: var(--site_primary_color)"
+                      class="rui-4K4Y7"
+                      d="M85.392 277.333h60.331l366.336 366.336 366.336-366.336h60.331v60.331l-408.981 409.003h-35.307l-409.045-409.003z"
+                    ></path>
+                  </svg>
+                </label>
+              </div>
+            </div>
+            <div
+              class="site-login col-2 d-flex justify-content-end position-relative"
+              data-bs-toggle="modal"
+              data-bs-target="#loginModal"
+            >
+              <span class="Login-btn ms-0 mt-3">
+                <a
+                  style="color: var(--site_primary_color)"
+                  class="fw-bold login-btn d-none d-lg-inline"
+                  href="#"
+                  >Login</a
+                >
+              </span>
+              <span
+                style="left: 0.5em"
+                class="sell-btn position-relative w-100"
+                data-bs-toggle="modal"
+                data-bs-target="#loginModal"
+              >
+                <span
+                  class="sell-btn-img-border position-absolute"
+                  style="z-index: 1"
+                >
+                  <svg
+                    width="104"
+                    height="48"
+                    viewBox="0 0 1603 768"
+                    class="_3V9PS"
+                  >
+                    <g>
+                      <path
+                        style="fill: white"
+                        class="_2bClX _12yOz"
+                        d="M434.442 16.944h718.82c202.72 0 367.057 164.337 367.057 367.058s-164.337 367.057-367.057 367.057h-718.82c-202.721 0-367.058-164.337-367.058-367.058s164.337-367.058 367.058-367.058z"
+                      ></path>
+                      <path
+                        style="fill: #ffce32"
+                        class="_2bClX _YBz-"
+                        d="M427.241 669.489c-80.917 0-158.59-25.926-218.705-73.004l-0.016-0.014c-69.113-54.119-108.754-131.557-108.754-212.474 0-41.070 9.776-80.712 29.081-117.797 25.058-48.139 64.933-89.278 115.333-118.966l-52.379-67.581c-64.73 38.122-115.955 90.98-148.159 152.845-24.842 47.745-37.441 98.726-37.441 151.499 0 104.027 50.962 203.61 139.799 273.175h0.016c77.312 60.535 177.193 93.887 281.22 93.887h299.699l25.138-40.783-25.138-40.783h-299.698z"
+                      ></path>
+                      <path
+                        style="fill: #23e5db"
+                        class="_2bClX _3uYj7"
+                        d="M1318.522 38.596v0c-45.72-14.369-93.752-21.658-142.762-21.658h-748.511c-84.346 0-165.764 21.683-235.441 62.713l3.118 51.726 49.245 15.865c54.16-31.895 117.452-48.739 183.073-48.739h748.511c38.159 0 75.52 5.657 111.029 16.829v0c44.91 14.111 86.594 37.205 120.526 66.792l66.163-57.68c-43.616-38.010-97.197-67.703-154.957-85.852z"
+                      ></path>
+                      <path
+                        style="fill: #3a77ff"
+                        class="_2bClX BfroU"
+                        d="M1473.479 124.453l-55.855 9.91-10.307 47.76c61.844 53.929 95.92 125.617 95.92 201.88 0 25.235-3.772 50.26-11.214 74.363-38.348 124.311-168.398 211.129-316.262 211.129h-448.812l25.121 40.783-25.121 40.783h448.812c190.107 0 357.303-111.638 406.613-271.498 9.572-31.009 14.423-63.162 14.423-95.559 0-98.044-43.805-190.216-123.317-259.551z"
+                      ></path>
+                    </g>
+                  </svg>
+                </span>
+                <span
+                  style="margin: 10px 20px; z-index: 1"
+                  class="sell-btn-img-text position-absolute d-flex fs-6"
+                >
+                  <span>
+                    <svg
+                      width="16px"
+                      height="24px"
+                      viewBox="0 0 1024 1024"
+                      data-aut-id="icon"
+                      class="justify-content-center me-2"
+                      fill-rule="evenodd"
+                    >
+                      <path
+                        style="fill: var(--site_primary_color)"
+                        class="rui-l7uK1"
+                        d="M414.898 123.739v291.218h-291.218l-97.014 97.014 97.014 97.131h291.218v291.16l97.073 97.071 97.073-97.071v-291.16h291.16l97.131-97.131-97.131-97.014h-291.16v-291.218l-97.073-97.073z"
+                      ></path>
+                    </svg>
+                  </span>
+                  <span
+                    style="color: var(--site_primary_color)"
+                    class="fw-bold text-uppercase justify-content-center"
+                    >Sell</span
+                  >
+                </span>
+              </span>
+              <div class="site-login-modal position-absolute">
+                <!-- Button trigger modal -->
+                <!-- <button
+                  type="button"
+                  class="btn btn-primary"
+                  data-bs-toggle="modal"
+                  data-bs-target="#loginModal"
+                >
+                  Launch demo modal
+                </button> -->
+
+                <!-- Modal -->
+                <div
+                  class="modal fade"
+                  id="loginModal"
+                  tabindex="0"
+                  aria-labelledby="loginModalLabel"
+                  aria-hidden="true"
+                  style="background-color: rgba(0, 0, 0, 0.7)"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <span
+                          class="modal-title flex-grow-1"
+                          id="loginModalLabel"
+                        >
+                          <div
+                            id="carouselLoginIdCaptions"
+                            class="carousel slide d-flex flex-column"
+                            data-bs-ride="false"
+                          >
+                            <div class="carousel-indicators">
+                              <button
+                                type="button"
+                                data-bs-target="#carouselLoginIdCaptions"
+                                data-bs-slide-to="0"
+                                class="active"
+                                aria-current="true"
+                                aria-label="Slide 1"
+                              ></button>
+                              <button
+                                type="button"
+                                data-bs-target="#carouselLoginIdCaptions"
+                                data-bs-slide-to="1"
+                                aria-label="Slide 2"
+                              ></button>
+                              <button
+                                type="button"
+                                data-bs-target="#carouselLoginIdCaptions"
+                                data-bs-slide-to="2"
+                                aria-label="Slide 3"
+                              ></button>
+                            </div>
+                            <div class="carousel-inner-wrapper">
+                              <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                  <img
+                                    src="	https://statics.olx.in/external/base/img/loginEntryPointPost.webp"
+                                    class="d-block w-100"
+                                    alt="guitar"
+                                  />
+                                  <div
+                                    class="carousel-caption d-none d-md-block"
+                                  >
+                                    <h5>First slide label</h5>
+                                    <p>
+                                      Some representative placeholder content
+                                      for the first slide.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="carousel-item">
+                                  <img
+                                    src="https://statics.olx.in/external/base/img/loginEntryPointFavorite.webp"
+                                    class="d-block w-100"
+                                    alt="hearts"
+                                  />
+                                  <div
+                                    class="carousel-caption d-none d-md-block"
+                                  >
+                                    <h5>Second slide label</h5>
+                                    <p>
+                                      Some representative placeholder content
+                                      for the second slide.
+                                    </p>
+                                  </div>
+                                </div>
+                                <div class="carousel-item">
+                                  <img
+                                    src="	https://statics.olx.in/external/base/img/loginEntryPointChat.webp"
+                                    class="d-block w-100"
+                                    alt="person-photo"
+                                  />
+                                  <div
+                                    class="carousel-caption d-none d-md-block"
+                                  >
+                                    <h5>Third slide label</h5>
+                                    <p>
+                                      Some representative placeholder content
+                                      for the third slide.
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <!-- <button
+                              class="carousel-control-prev"
+                              type="button"
+                              data-bs-target="#carouselLoginIdCaptions"
+                              data-bs-slide="prev"
+                            >
+                              <span
+                                class="carousel-control-prev-icon"
+                                aria-hidden="true"
+                              ></span>
+                              <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button
+                              class="carousel-control-next"
+                              type="button"
+                              data-bs-target="#carouselLoginIdCaptions"
+                              data-bs-slide="next"
+                            >
+                              <span
+                                class="carousel-control-next-icon"
+                                aria-hidden="true"
+                              ></span>
+                              <span class="visually-hidden">Next</span>
+                            </button> -->
+                          </div>
+                        </span>
+                        <button
+                          type="button"
+                          class="btn-close position-absolute"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                          style="
+                            flex-shrink: 1;
+                            align-self: start;
+                            justify-self: end;
+                            display: inline;
+                            right: 16px;
+                          "
+                        ></button>
+                      </div>
+                      <div class="modal-body">...sanjay</div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                          Save changes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="row site-nav"
+            style="
+              background-color: #dce2e4;
+              box-shadow: -20px 0 0 0 #dce2e4, 20px 0 0 0 #dce2e4;
+              margin: 68px 0 0;
+              position: absolute;
+              z-index: 2;
+              overflow: visible;
+            "
+          >
+            <div
+              style="margin: 0; position: relative"
+              class="row nav-row d-flex align-items-center mt-2 flex-nowrap p-0"
+            >
+              <div
+                class="all-cat-nav position-absolute d-inline-flex flex-shrink-1 align-items-center me-0 ps-1 pe-0"
+              >
+                <div id="nav-visible" class="nav-visible d-flex flex-nowrap">
+                  <span class="navi-title text-nowrap fw-bold"
+                    >ALL CATEGORIES
+                  </span>
+                  <span class="nav-arrow ps-2">
+                    <figure class="my-auto">
+                      <label for="nav-visible">
+                        <svg
+                          style="
+                            transition: all 1s ease 0s;
+                            transform: rotate(0deg);
+                          "
+                          class="drop-down-arrow"
+                          width="24px"
+                          height="24px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: var(--site_primary_color)"
+                            class="rui-4K4Y7"
+                            d="M85.392 277.333h60.331l366.336 366.336 366.336-366.336h60.331v60.331l-408.981 409.003h-35.307l-409.045-409.003z"
+                          ></path>
+                        </svg>
+                      </label>
+                    </figure>
+                  </span>
+                </div>
+                <div
+                  id="nav-hidden"
+                  style="top: 30px"
+                  class="position-absolute visually-hidden nav-flex-categoryList"
+                >
+                  <div class="nav-categories p-3">
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>OLX Autos (Cars)</span>
+                        </a>
+                      </div>
+                    </div>
+                    <!-- title and item -->
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Properties</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> For Sale: Houses & Apartments </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> For Rent: Houses & Apartments </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Lands & Plots </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>For Rent: Shops & Offices </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> For Sale: Shops & Offices </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> PG & Guest Houses </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Mobiles</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Mobile Phones </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Accessories </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Tablets </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Jobs</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Data entry & Back office </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Sales & Marketing </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> BPO & Telecaller </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Driver </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Office Assistant </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Delivery & Collection </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Teacher </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Cook </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Receptionist & Front office </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Operator & Technician </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> IT Engineer & Developer </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Hotel & Travel Executive </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Accountant </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Designer </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Other Jobs </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Bikes</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Motorcycles </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Scooters </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Spare Parts </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Bicycles </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Electronics & Appliances</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> TVs, Video - Audio </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Kitchen & Other Appliances </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Computers & Laptops </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Cameras & Lenses </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Games & Entertainment </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Fridges </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Computer Accessories </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Hard Disks, Printers & Monitors </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> ACs </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Washing Machines </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Commercial Vehicles & Spares</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Commercial & Other Vehicles </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Spare Parts </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Furniture</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Sofa & Dining </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Beds & Wardrobes </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Home Decor & Garden </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Kids Furniture </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Other Household Items </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Fashion</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Men </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Women </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Kids </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Books, Sports & Hobbies</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Books </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Gym & Fitness </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Musical Instruments </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Sports Equipment </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Other Hobbies </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Pets</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Fishes & Aquarium </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Pet Food & Accessories </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Dogs </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Other Pets </span>
+                        </a>
+                      </div>
+                    </div>
+                    <div class="nav-category-item-wrapper">
+                      <div class="nav-flex-item-title">
+                        <a class="nav-item-link" href="#">
+                          <span>Services</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Electronics & Computer</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Education & Classes</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Drivers & Taxi</span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span>Health & Beauty </span>
+                        </a>
+                      </div>
+                      <div class="nav-flex-item">
+                        <a class="nav-item-link" href="#">
+                          <span> Other Services </span>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                style="margin-left: 160px"
+                class="nav-bar d-flex flex-grow-1 overflow-hidden flex-nowrap py-1"
+              >
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>Cars</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>Motorcycles</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>Mobile Phones</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>For Sale: Houses & Apartments</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>Scooters</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>Commercial & Other Vehicles</span>
+                  </a>
+                </div>
+                <div class="nav-bar-item">
+                  <a href="#">
+                    <span>For Rent: Houses & Apartments</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style="
+              height: 300px;
+              position: absolute;
+              top: 120px;
+              left: 0;
+              right: 0;
+              z-index: 1;
+            "
+            class="row mt-2 site-public-ad-banner"
+          >
+            <div
+              style="margin-bottom: 40px; height: 135px; z-index: -1"
+              class="main-ad-flex"
+            >
+              <img
+                id="main-ad-flex-id"
+                style="height: 135px"
+                class="position-relative"
+                src="https://www.w3schools.com/css/img_trans.gif"
+              />
+              <a
+                style="
+                  position: relative;
+                  left: 52%;
+                  top: -60%;
+                  z-index: 1;
+                  padding: 2px 16px;
+                  border: 4px solid white;
+                  background-color: white;
+                  color: var(--site_primary_color);
+                "
+                class="nav-pills rounded-2 text-nowrap sell-ad-flex-btn fs-5 fw-bold"
+                href="#"
+                >Sell car</a
+              >
+            </div>
+            <div
+              style="height: 90px; margin: 10px 0px"
+              class="g-ad-flex bg-dark w-100"
+            >
+              <!-- <div style="top: -50%; left: 40%" class="cube-base">
+                <section class="cube-platform">
+                  <div class="front cube_face cube-base"></div>
+                  <div class="left cube_face cube-base"></div>
+                  <div class="right cube_face cube-base"></div>
+                  <div class="back cube_face cube-base"></div>
+                  <div class="top cube_face cube-base"></div>
+                  <div class="bottom cube_face cube-base"></div>
+                  <div class="shadow cube-base"></div>
+                </section>
+              </div> -->
+              <span
+                style="margin-left: 27%"
+                class="text-light fw-bold fs-4 position-absolute mt-4"
+              >
+                Google Ads
+              </span>
+              <!-- <span
+                style="margin-left: 47%"
+                ;
+                class="text-light fw-bold fs-4 position-absolute mt-4"
+              >
+                Ads
+              </span> -->
+            </div>
+          </div>
+        </div>
+        <!-- site-header-end -->
+
+        <!-- site-Main-Sart -->
+
+        <div style="margin: 450px 0 0; width: 100%" class="site-main">
+          <div
+            class="d-block last-product-wrapper"
+            style="
+              background-color: #ebeeef;
+              margin: 0 1em 24px;
+              width: calc(100vw - 2em);
+            "
+          >
+            <div
+              style="padding: 16px 16px 32px"
+              class="lastSearchItems d-flex flex-wrap flex-column"
+            >
+              <div
+                style="margin: 4px 0 16px"
+                class="productHeadTitle d-flex align-items-center"
+              >
+                <h3 class="d-flex flex-grow-1 m-0">
+                  Based on your last search
+                </h3>
+                <a
+                  style="
+                    text-decoration: 2px underline;
+                    text-underline-offset: 2px;
+                  "
+                  class="fw-bold float-end"
+                  href="#"
+                  >View more</a
+                >
+              </div>
+              <div class="productCardGallery">
+                <section id="productGallery">
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </section>
+              </div>
+            </div>
+          </div>
+          <div
+            class="d-block fresh-product-wrapper"
+            style="
+              background-color: none;
+              margin: 0 1em;
+              padding-bottom: 80px;
+              width: calc(100vw - 2em);
+            "
+          >
+            <div
+              style="padding: 0 16px"
+              class="freshRecommendations d-flex flex-wrap flex-column"
+            >
+              <div
+                style="margin: 4px 0 16px"
+                class="productHeadTitle d-flex align-items-center"
+              >
+                <h3 class="d-flex flex-grow-1 m-0">Fresh recommendations</h3>
+              </div>
+              <div class="productCardGallery">
+                <section id="productGallery">
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="item bg-light">
+                    <a href="#">
+                      <span class="featured">featured</span>
+                      <span style="font-size: 2em" class="hearts">
+                        &hearts;</span
+                      >
+                      <figure class="d-flex justify-content-center">
+                        <img
+                          class="item-img"
+                          src="https://apollo-singapore.akamaized.net/v1/files/c64abcqa4w1r3-IN/image;s=300x600;q=60"
+                          alt="Car-Image"
+                        />
+                      </figure>
+                      <div class="item-detail-wrapper">
+                        <h3>$ 5,50,00</h3>
+                        <h6>2017 - 21600.0km</h6>
+                        <p>Toyota Etios Liva 1.2 G, 2017, Petrol</p>
+                        <div class="item-adress">
+                          <span>HIREMATH LAYOUT, BENGLURU</span>
+                          <span>APR 09</span>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </section>
+              </div>
+              <div
+                style="margin-top: 20px"
+                class="item-loadMore mx-auto d-flex"
+              >
+                <a
+                  style="
+                    text-decoration: none;
+                    color: var(--site_primary_color);
+                  "
+                  class="fw-bold"
+                  href="#"
+                  >View more
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- site-main-end -->
+        <div class="site-footer d-flex flex-column m-0">
+          <div
+            style="background-color: rgba(0, 47, 52, 0.03); width: 100vw"
+            class="footer-flex d-flex"
+          >
+            <div class="row p-0 m-0 flex-nowrap w-100">
+              <div style="width: 435px" class="footer-flex-img p-0">
+                <picture>
+                  <source
+                    srcset="
+                      https://statics.olx.in/external/base/img/phone-app.webp
+                    "
+                  />
+                  <img
+                    src="	https://statics.olx.in/external/base/img/phone-app.webp"
+                    alt="phones"
+                  />
+                </picture>
+              </div>
+              <div
+                style="
+                  margin-left: 44px;
+                  width: 294px;
+                  text-align: left;
+                  text-size-adjust: 100%;
+                  font-family: Roboto, Arial, Helvetica, sans-serif;
+                "
+                class="footer-ad-heading p-0 flex-grow-1"
+              >
+                <div
+                  style="margin: 28px 0 16px"
+                  class="footer-ad-title text-nowrap"
+                >
+                  <span
+                    style="
+                      text-transform: uppercase;
+                      line-height: 40px;
+                      font-size: 34px;
+                      font-weight: 700;
+                      color: #002f34;
+                    "
+                    >Try the olx app</span
+                  >
+                </div>
+                <div class="footer-ad-subtitle">
+                  <span
+                    style="line-height: 20px; font-size: 24px; font-weight: 400"
+                    >Buy, sell and find just about anything using the app on
+                    your mobile.</span
+                  >
+                </div>
+              </div>
+              <div
+                style="width: 2px; height: 198px"
+                class="footer-seprator d-flex align-items-center p-0"
+              >
+                <div style="width: 2px" class="d-flex">
+                  <div
+                    style="
+                      width: 2px;
+                      margin: auto;
+                      height: 136px;
+                      background-color: rgba(14, 4, 5, 0.2);
+                      border: 0 solid rgba(14, 4, 5, 0.2);
+                    "
+                  ></div>
+                </div>
+              </div>
+              <div
+                style="margin-left: 32px; padding: 0; width: 200px"
+                class="footer-ad-apps flex-grow-1"
+              >
+                <div
+                  style="
+                    color: #002f34;
+                    text-transform: uppercase;
+                    line-height: 20px;
+                    font-size: 14px;
+                    font-weight: 700;
+                    margin: 60px 0 12px;
+                  "
+                  class="getapp-title"
+                >
+                  <span>Get your app today</span>
+                </div>
+                <div class="getapp-logo">
+                  <a
+                    href="https://apps.apple.com/in/app/olx-buy-sell-near-you/id913492792?utm_source=desktop_ios&utm_medium=home_banner&utm_campaign=home"
+                    target="_blank"
+                  >
+                    <picture>
+                      <source
+                        srcset="
+                          https://statics.olx.in/external/base/img/appstore_2x.webp
+                        "
+                      />
+                      <img
+                        class="downLoadApp"
+                        src="https://statics.olx.in/external/base/img/appstore_2x.webp"
+                        alt="AppleApp"
+                      />
+                    </picture>
+                  </a>
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.olx.southasia&hl=en_IN&utm_source=desktop_android&utm_medium=home_banner&utm_campaign=home"
+                    target="_blank"
+                  >
+                    <picture>
+                      <source
+                        srcset="
+                          https://statics.olx.in/external/base/img/playstore_2x.webp
+                        "
+                      />
+                      <img
+                        class="downLoadApp mt-2"
+                        src="	https://statics.olx.in/external/base/img/playstore_2x.webp"
+                        alt="PlaystoreApp"
+                      />
+                    </picture>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            style="background-color: #ebeeef; overflow-x: hidden"
+            class="footer-links"
+          >
+            <div
+              style="line-height: 20px; font: size 14px"
+              class="desktop-footer d-flex"
+            >
+              <section class="footer-grid">
+                <section class="grid-item">
+                  Popular Locations
+                  <ul>
+                    <li><a href="#">Kolkata</a></li>
+                    <li><a href="#">Mumbai</a></li>
+                    <li><a href="#">Chennai</a></li>
+                    <li><a href="#">Pune</a></li>
+                  </ul>
+                </section>
+                <section class="grid-item">
+                  Trending Locations
+                  <ul>
+                    <li><a href="#"> Bhuvneshwar</a></li>
+                    <li><a href="#"> Hydrabad</a></li>
+                    <li><a href="#"> Chandigarh</a></li>
+                    <li><a href="#"> Nashik</a></li>
+                  </ul>
+                </section>
+                <section class="grid-item">
+                  About us
+                  <ul>
+                    <li><a href="#"> About OLX Group</a></li>
+                    <li><a href="#"> careers</a></li>
+                    <li><a href="#"> Contact Us</a></li>
+                    <li><a href="#"> OLXPeople</a></li>
+                    <li><a href="#">Waah Jobs</a></li>
+                  </ul>
+                </section>
+                <section class="grid-item">
+                  OLX
+                  <ul>
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Sitemap</a></li>
+                    <li><a href="#">Legal & Privacy information</a></li>
+                    <li><a href="#">Blog</a></li>
+                  </ul>
+                </section>
+              </section>
+              <section
+                style="justify-content: space-between"
+                class="footer-follow-us d-flex flex-column"
+              >
+                <div class="footer-icons">
+                  <span
+                    style="
+                      font-weight: 700;
+                      text-transform: uppercase;
+                      line-height: 20px;
+                      font-size: 14px;
+                    "
+                    class="f-i-title"
+                    >Follow Us</span
+                  >
+                  <div class="f-icons">
+                    <a
+                      href="https://www.facebook.com/olxindia/"
+                      target="_blank"
+                    >
+                      <span>
+                        <svg
+                          width="48px"
+                          height="48px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: rgba(0, 47, 52, 0.64)"
+                            class="rui-4K4Y7"
+                            d="M512 85.325c235.648 0 426.667 191.019 426.667 426.667s-191.019 426.667-426.667 426.667c-235.648 0-426.667-191.019-426.667-426.667s191.019-426.667 426.667-426.667zM512 150.605c-199.595 0-361.429 161.792-361.429 361.387 0 199.637 161.835 361.429 361.429 361.429s361.429-161.792 361.429-361.429c0-199.595-161.835-361.387-361.429-361.387zM616.789 301.133v57.6h-61.312c-15.403 0-28.8 14.848-28.8 31.616v0 63.147h90.069v53.845h-90.069v215.509h-67.115v-215.509h-78.592v-53.845h78.592v-74.325c0-42.752 34.517-78.037 76.672-78.037v0h80.555z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </a>
+                    <a
+                      href="https://www.instagram.com/olx_india/"
+                      target="_blank"
+                    >
+                      <span>
+                        <svg
+                          width="48px"
+                          height="48px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: rgba(0, 47, 52, 0.64)"
+                            class="rui-4K4Y7"
+                            d="M511.979 85.321c235.648 0 426.667 191.019 426.667 426.667s-191.019 426.667-426.667 426.667c-235.605 0-426.667-191.019-426.667-426.667s191.061-426.667 426.667-426.667zM511.979 150.601c-199.595 0-361.429 161.792-361.429 361.387 0 199.637 161.835 361.429 361.429 361.429 199.637 0 361.429-161.792 361.429-361.429 0-199.595-161.792-361.387-361.429-361.387zM619.721 291.247c70.784 0 128.384 57.643 128.384 128.469v0 184.619c0 70.784-57.6 128.427-128.384 128.427v0h-215.424c-70.827 0-128.384-57.643-128.384-128.427v0-184.619c0-70.827 57.557-128.469 128.384-128.469v0zM619.721 335.791h-215.424c-46.293 0-83.883 37.632-83.883 83.925v0 184.619c0 46.293 37.589 83.925 83.883 83.925v0h215.424c46.251 0 83.883-37.632 83.883-83.925v0-184.619c0-46.293-37.632-83.925-83.883-83.925v0zM512.021 405.248c63.659 0 115.456 49.195 115.456 109.653 0 59.904-50.688 106.752-115.456 106.752-63.659 0-115.499-49.195-115.499-109.653 0-59.861 50.688-106.752 115.499-106.752zM512.021 444.885c-41.813 0-75.819 31.403-75.819 70.016 0 37.291 35.413 70.016 75.819 70.016s75.776-32.725 75.776-70.016c0-38.613-34.005-70.016-75.776-70.016zM630.857 358.852c23.296 0 43.008 19.712 43.008 43.008s-19.712 43.008-43.008 43.008c-23.296 0-43.008-19.712-43.008-43.008s19.712-43.008 43.008-43.008zM630.857 386.927c-8.661 0-15.019 6.272-15.019 14.933 0 8.704 6.357 14.976 15.019 14.976s14.976-6.272 14.976-14.976c0-8.661-6.315-14.933-14.976-14.933z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </a>
+                    <a href="https://twitter.com/OLX_India" target="_blank">
+                      <span>
+                        <svg
+                          width="48px"
+                          height="48px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: rgba(0, 47, 52, 0.64)"
+                            class="rui-4K4Y7"
+                            d="M511.979 85.321c235.648 0 426.667 191.019 426.667 426.667s-191.019 426.667-426.667 426.667c-235.605 0-426.667-191.019-426.667-426.667s191.061-426.667 426.667-426.667zM511.979 150.601c-199.595 0-361.429 161.792-361.429 361.387 0 199.637 161.835 361.429 361.429 361.429 199.637 0 361.429-161.792 361.429-361.429 0-199.595-161.792-361.387-361.429-361.387zM600.499 335.040c25.728 0 51.499 9.6 67.584 25.728 16.085 0 45.013-9.643 57.899-19.328-6.443 19.328-25.771 41.813-38.613 51.499 22.528 0 44.971-9.685 51.456-12.885-12.843 16.085-25.728 32.171-45.013 45.056 6.4 144.768-109.397 263.851-260.608 263.851-51.499 0-99.755-12.885-148.011-38.656 64.341 9.685 119.040-22.528 135.125-38.613-41.856 0-80.427-35.371-83.669-61.141 9.685 0 28.971 3.243 38.656-3.2-54.699-12.885-70.784-54.699-70.784-86.869 9.643 9.685 32.128 9.685 41.813 9.685-32.171-19.328-54.699-70.827-28.971-119.040 48.256 57.899 122.283 90.069 193.067 93.269-3.243-6.4-3.243-12.885-3.243-19.285 0-48.256 41.856-90.069 93.312-90.069z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </a>
+                    <a
+                      href="https://www.youtube.com/user/OLXInTv"
+                      target="_blank"
+                    >
+                      <span>
+                        <svg
+                          width="48px"
+                          height="48px"
+                          viewBox="0 0 1024 1024"
+                          data-aut-id="icon"
+                          class=""
+                          fill-rule="evenodd"
+                        >
+                          <path
+                            style="fill: rgba(0, 47, 52, 0.64)"
+                            class="rui-4K4Y7"
+                            d="M512 85.321c235.648 0 426.667 191.019 426.667 426.667s-191.019 426.667-426.667 426.667c-235.648 0-426.667-191.019-426.667-426.667s191.019-426.667 426.667-426.667zM512 150.601c-199.595 0-361.429 161.792-361.429 361.387 0 199.637 161.835 361.429 361.429 361.429s361.429-161.792 361.429-361.429c0-199.595-161.835-361.387-361.429-361.387zM382.605 321.86l311.125 190.123-311.125 190.165v-380.288z"
+                          ></path>
+                        </svg>
+                      </span>
+                    </a>
+                  </div>
+                </div>
+                <div class="footer-downloads">
+                  <a
+                    href="https://play.google.com/store/apps/details?id=com.olx.southasia"
+                    target="_blank"
+                  >
+                    <picture>
+                      <source
+                        srcset="
+                          https://statics.olx.in/external/base/img/playstore.webp
+                        "
+                      />
+                      <img
+                        class="downLoadApp"
+                        src="https://statics.olx.in/external/base/img/playstore.webp"
+                        alt="PlaystoreApp"
+                      />
+                    </picture>
+                  </a>
+                  <a
+                    href="https://itunes.apple.com/in/app/olx-buy-sell-near-you/id913492792?mt=8"
+                    target="_blank"
+                  >
+                    <picture>
+                      <source
+                        srcset="
+                          https://statics.olx.in/external/base/img/appstore.webp
+                        "
+                      />
+                      <img
+                        class="downLoadApp mt-1"
+                        src="https://statics.olx.in/external/base/img/appstore.webp"
+                        alt="AppleApp"
+                      />
+                    </picture>
+                  </a>
+                </div>
+              </section>
+            </div>
+          </div>
+          <div
+            style="background: #002f34; color: white"
+            class="footer-note p-3"
+          >
+            <div
+              class="bottom-footer d-flex flex-row-reverse justify-content-between flex-wrap"
+            >
+              <section class="botm-fotr-text">
+                <span>Free Classifieds in India</span>
+                . © 2006-2022 OLX
+              </section>
+              <section class="botm-fotr-text">
+                <span>Other Countries</span>
+                <a href="https://www.olx.com.lb" target="_blank">Lebanon</a>
+                <a href="https://www.olx.co.za" target="_blank">South Africa</a>
+                <a href="https://www.olx.co.id" target="_blank">Indonesia</a>
+              </section>
+            </div>
+          </div>
+        </div>
+        <!-- site-footer-end -->
+      </div>
+    </div>
+
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../../Bootstrap/assets/js/bootstrap.bundle.min.js"></script>
+
+    <!-- dropdown-arrow -->
+    <script>
+      var dropDownArrow;
+      var dropDownArrowStyle;
+
+      dropDownArrow = Array.from(
+        document.getElementsByClassName("drop-down-arrow")
+      );
+      dropDownArrow.forEach((myelement) => {
+        dropDownArrowStyle = myelement.style.transform = "rotate(0deg)";
+      });
+    </script>
+
+    <!-- drop-down-arrow-movement- Header -->
+    <script>
+      //border-action
+      var check1;
+      var check2;
+      var html;
+
+      html = document.querySelector("html");
+
+      var getitem1 = Array.from(
+        document.querySelectorAll("#id-site-item-search")
+      );
+      var getitem2 = Array.from(
+        document.querySelectorAll("#id-site-location-search")
+      );
+
+      // getitems = getitem1.concat(getitem2);
+
+      getitem1.forEach((item) => {
+        item.addEventListener("click", () => {
+          check1 = item;
+          item.classList.add("post-border-style");
+        });
+      });
+
+      getitem2.forEach((item) => {
+        item.addEventListener("click", () => {
+          check2 = item;
+          item.classList.add("post-border-style");
+        });
+      });
+
+      html.addEventListener("click", (e) => {
+        if (e.target.parentElement !== check1) {
+          if (check1 !== undefined) {
+            if (check1.classList.contains("post-border-style")) {
+              check1.classList.remove("post-border-style");
+            }
+          }
+        }
+      });
+      html.addEventListener("click", (e) => {
+        if (e.target.parentElement !== check2) {
+          if (check2 !== undefined) {
+            if (check2.classList.contains("post-border-style")) {
+              check2.classList.remove("post-border-style");
+            }
+          }
+        }
+      });
+      //movement-action
+      var elecopy;
+      var myLanguage;
+      const elems = Array.from(
+        document.getElementsByClassName("drop-down-arrow")
+      );
+
+      elems.forEach((ele) => {
+        elecopy = ele;
+
+        ele.addEventListener("click", () => {
+          dropDownArrowStyle = ele.style.transform;
+
+          // if 180deg
+          if (dropDownArrowStyle == "rotate(180deg)") {
+            dropDownArrowStyle = ele.style.transform = "rotate(0deg)";
+            if (ele.parentElement.getAttribute("for") == "myLanguage") {
+              myLanguage = document.getElementById("myLanguage");
+              myLanguage.size = 0;
+            } else if (
+              ele.parentElement.getAttribute("for") == "locality_search"
+            ) {
+              document
+                .getElementById("locality-Items")
+                .classList.add("visually-hidden");
+              document
+                .getElementById("locality-Items")
+                .classList.remove("d-flex");
+            } else if (ele.parentElement.getAttribute("for") == "nav-visible") {
+              document
+                .getElementById("nav-hidden")
+                .classList.add("visually-hidden");
+              document.getElementById("nav-hidden").classList.remove("d-flex");
+              dropDownArrowStyle = ele.style.transform = "rotate(180deg)";
+            }
+
+            // if 0deg
+          } else if (dropDownArrowStyle == "rotate(0deg)") {
+            dropDownArrowStyle = ele.style.transform = "rotate(180deg)";
+            if (ele.parentElement.getAttribute("for") == "myLanguage") {
+              myLanguage = document.getElementById("myLanguage");
+              myLanguage.size = myLanguage.options.length;
+              // Array.from(myLanguage.options).forEach((langopt) => {
+              //   langopt.addEventListener("click", () => {
+              //     myLanguage.size = 0;
+              //     dropDownArrowStyle = elecopy.style.transform = "rotate(0deg)";
+              //   });
+              // });
+            } else if (
+              ele.parentElement.getAttribute("for") == "locality_search"
+            ) {
+              document
+                .getElementById("locality-Items")
+                .classList.remove("visually-hidden");
+              document.getElementById("locality-Items").classList.add("d-flex");
+            } else if (ele.parentElement.getAttribute("for") == "nav-visible") {
+              document
+                .getElementById("nav-hidden")
+                .classList.remove("visually-hidden");
+              document.getElementById("nav-hidden").classList.add("d-flex");
+              dropDownArrowStyle = ele.style.transform = "rotate(0deg)";
+            }
+          }
+        });
+      });
+
+      //dropdown-list functionality
+
+      //locality search
+      var userSelectId = document.getElementById("id-site-location-search");
+      var droparrowlocality;
+
+      userSelectId.addEventListener("click", () => {
+        droparrowlocality =
+          userSelectId.getElementsByClassName("drop-down-arrow");
+        dropDownArrowStyle = droparrowlocality[0].style.transform;
+
+        hiddenitem = document.getElementById("locality-Items");
+
+        if (dropDownArrowStyle == "rotate(0deg)") {
+          droparrowlocality[0].style.transform = "rotate(180deg)";
+          hiddenitem.classList.remove("visually-hidden");
+          hiddenitem.classList.add("d-flex");
+        } else {
+          droparrowlocality[0].style.transform = "rotate(0deg)";
+          hiddenitem.classList.add("visually-hidden");
+          hiddenitem.classList.remove("d-flex");
+        }
+      });
+
+      var userSelectId1 = document.getElementById("locality-Items");
+      userSelectId1.addEventListener("click", () => {
+        userSelectId1.classList.remove("d-flex");
+        userSelectId1.classList.add("visually-hidden");
+        var usparent = userSelectId1.parentElement;
+        var ussty = usparent.getElementsByClassName("drop-down-arrow");
+        ussty[0].style.transform = "rotate(0deg)";
+      });
+
+      //langbox
+
+      var userSelectId2 = document.getElementById("lang-box");
+      myLanguage = document.getElementById("myLanguage");
+      userSelectId2.addEventListener("click", () => {
+        if (myLanguage.size == 0) {
+          myLanguage.size = myLanguage.options.length;
+
+          var langarrow =
+            userSelectId2.getElementsByClassName("drop-down-arrow");
+          langarrow[0].style.transform = "rotate(180deg)";
+        } else {
+          myLanguage.size = 0;
+
+          var langarrow =
+            userSelectId2.getElementsByClassName("drop-down-arrow");
+          langarrow[0].style.transform = "rotate(0deg)";
+        }
+      });
+
+      //nav-bar-item
+
+      var userSelectId3 = document.getElementById("nav-visible");
+      var dropnavarrow;
+
+      userSelectId3.addEventListener("click", () => {
+        dropnavarrow = userSelectId3.getElementsByClassName("drop-down-arrow");
+        dropDownArrowStyle = dropnavarrow[0].style.transform;
+
+        hiddenitem = document.getElementById("nav-hidden");
+
+        if (dropDownArrowStyle == "rotate(0deg)") {
+          dropnavarrow[0].style.transform = "rotate(180deg)";
+          hiddenitem.classList.remove("visually-hidden");
+          hiddenitem.classList.add("d-flex");
+        } else {
+          dropnavarrow[0].style.transform = "rotate(0deg)";
+          hiddenitem.classList.add("visually-hidden");
+          hiddenitem.classList.remove("d-flex");
+        }
+      });
+    </script>
+
+    <!-- productGallery Item image -->
+
+    <script>
+      window.addEventListener("load", (event) => {
+        const images = Array.from(document.getElementsByClassName("item-img"));
+
+        images.forEach((image) => {
+          if (image.complete !== true) {
+            image.parentElement.classList.add("item-img-loading");
+            // console.log("added Class");
+          } else {
+            var find = image.parentElement.classList;
+            for (i = 0; i <= find.length; i++) {
+              if (find[i] == "item-img-loading") {
+                image.parentElement.classList.remove("item-img-loading");
+                // console.log("removed Class");
+              }
+            }
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
